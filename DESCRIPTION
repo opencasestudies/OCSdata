@@ -1,0 +1,18 @@
+Package: OCSdata
+Title: Load data from the Open Case Study repository
+Version: 1.0
+Authors@R: 
+    person(given = "Michael",
+           family = "Breshock",
+           role = c("aut", "cre"),
+           email = "mbresho1@jh.edu")
+Description: This package can be used to download raw data files from the case study repositories 
+  and/or load pre-wrangled data as R objects (.rda). This is intended to allow learners to load the data 
+  in a variety of methods all within R. 
+Imports: 
+  usethis (>= 2.0.0)
+License: GPL -3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
