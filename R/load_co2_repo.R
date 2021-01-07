@@ -18,6 +18,11 @@
 #'
 #' @examples load_co2_repo('/Users/michael/Desktop/')
 #'
-load_co2_repo <- function(outpath){
-  create_from_github('opencasestudies/ocs-bp-co2-emissions',destdir=outpath)
+load_co2_repo <- function(outpath=NULL){
+  if (is.null(outpath)) {
+    create_from_github('opencasestudies/ocs-bp-co2-emissions')
+  } else {
+    create_from_github('opencasestudies/ocs-bp-co2-emissions',destdir=outpath)
+  }
+
 }
