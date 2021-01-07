@@ -1,6 +1,7 @@
 #' Load CO2 Emissions Repository
 #'
-#' Download the CO2 Emissions case study repository.
+#' Download the CO2 Emissions case study repository and save it as a new R project in a local directory.
+#' Need to have a personal access token (PAT) to work.
 #'
 #' @details This function downloads the OCS CO2 emissions case study repository
 #' on GitHub and saves it as a new R project in a local directory. This makes
