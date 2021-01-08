@@ -4,7 +4,7 @@
 \alias{load_co2_repo}
 \title{Load CO2 Emissions Repository}
 \usage{
-load_co2_repo(outpath)
+load_co2_repo(outpath = NULL)
 }
 \arguments{
 \item{outpath}{character string, path to the directory where the downloaded
@@ -15,7 +15,8 @@ nothing useful is returned, a new R project will be loaded in the
 directory specified in outpath.
 }
 \description{
-Download the CO2 Emissions case study repository.
+Download the CO2 Emissions case study repository and save it as a new R project in a local directory.
+Need to have a personal access token (PAT) to work.
 }
 \details{
 This function downloads the OCS CO2 emissions case study repository
