@@ -1,6 +1,6 @@
 Package: OCSdata
 Title: Load data from the Open Case Study repository
-Version: 1.0
+Version: 1.0.1
 Authors@R: 
     person(given = "Michael",
            family = "Breshock",
