@@ -16,7 +16,7 @@
 #' @importFrom xlsx write.xlsx
 #' @export
 #'
-#' @examples load_co2_data('/Users/michael/Desktop/')
+#' @examples load_co2_data()
 #'
 load_co2_data <- function(outpath=NULL){
   if (is.null(outpath)) {
