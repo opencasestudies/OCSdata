@@ -14,7 +14,6 @@
 #' @import httr
 #' @importFrom readxl read_excel
 #' @importFrom xlsx write.xlsx
-#' @importFrom here here
 #' @export
 #'
 #' @examples load_co2_data('/Users/michael/Desktop/')
@@ -42,7 +41,7 @@ load_co2_data <- function(outpath=NULL){
   GET(url, write_disk(tf <- tempfile(fileext = ".xlsx"))) # loading file from url
   energy <- read_excel(tf, sheet = 1)
 
-  write.xlsx(energy, file = here("data", "energy_use_per_person.xlsx"), showNA=FALSE) # writing to .xlsx file
+  write.xlsx(energy, file = file.path(datapath, "energy_use_per_person.xlsx"), showNA=FALSE) # writing to .xlsx file
 
   ## downloading gdp_per_capita_yearly_growth.xlsx
   url = 'https://github.com/opencasestudies/ocs-bp-co2-emissions/blob/master/data/gdp_per_capita_yearly_growth.xlsx?raw=true'
@@ -50,7 +49,7 @@ load_co2_data <- function(outpath=NULL){
   GET(url, write_disk(tf <- tempfile(fileext = ".xlsx"))) # loading file from url
   capita <- read_excel(tf, sheet = 1)
 
-  write.xlsx(capita, file = here("data", "gdp_per_capita_yearly_growth.xlsx"), showNA=FALSE) # writing to .xlsx file
+  write.xlsx(capita, file = file.path(datapath, "gdp_per_capita_yearly_growth.xlsx"), showNA=FALSE) # writing to .xlsx file
 
   ## downloading yearly_co2_emissions_1000_tonnes.xlsx
   url = 'https://github.com/opencasestudies/ocs-bp-co2-emissions/blob/master/data/yearly_co2_emissions_1000_tonnes.xlsx?raw=true'
@@ -58,5 +57,5 @@ load_co2_data <- function(outpath=NULL){
   GET(url, write_disk(tf <- tempfile(fileext = ".xlsx"))) # loading file from url
   emissions <- read_excel(tf, sheet = 1)
 
-  write.xlsx(emissions, file = here("data", "yearly_co2_emissions_1000_tonnes.xlsx"), showNA=FALSE) # writing to .xlsx file
+  write.xlsx(emissions, file = file.path(datapath, "yearly_co2_emissions_1000_tonnes.xlsx"), showNA=FALSE) # writing to .xlsx file
 }
