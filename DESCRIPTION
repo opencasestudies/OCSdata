@@ -1,6 +1,6 @@
 Package: OCSdata
 Title: Load data from the Open Case Study repository
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: 
     person(given = "Michael",
            family = "Breshock",
@@ -8,9 +8,14 @@ Authors@R:
            email = "mbresho1@jh.edu")
 Description: This package can be used to download raw data files from the case study repositories 
   and/or load pre-wrangled data as R objects (.rda). This is intended to allow learners to load the data 
-  in a variety of methods all within R. 
+  in a variety of methods all within R. The optimal method for new students following along with the case 
+  study lesson is to use the load_co2_data() function. 
 Imports: 
-  usethis (>= 2.0.0)
+  usethis (>= 2.0.0),
+  httr (>= 1.4.2),
+  readxl (>= 1.3.1),
+  xlsx (>= 0.6.5),
+  here (>= 1.0.0)
 License: GPL -3
 Encoding: UTF-8
 LazyData: true
