@@ -25,8 +25,8 @@ load_co2_data <- function(outpath=NULL){
   } else {
     datapath = file.path(outpath,'data') # path to new data folder in outpath directory
   }
-
   dir.create(datapath) # creating data folder
+
   # downloading disasters.csv
   download.file("https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/disasters.csv",
                 destfile = file.path(datapath,'disasters.csv'), method = "curl")
