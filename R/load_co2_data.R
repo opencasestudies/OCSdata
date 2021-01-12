@@ -27,15 +27,29 @@ load_co2_data <- function(outpath=NULL){
   }
 
   dir.create(datapath) # creating data folder
-  # downloading .csv files
+  # downloading disasters.csv
   download.file("https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/disasters.csv",
                 destfile = file.path(datapath,'disasters.csv'), method = "curl")
+
+  # downloading mortality.csv
   download.file("https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/mortality.csv",
                 destfile = file.path(datapath,'mortality.csv'), method = "curl")
+
+  # downloading temperature.csv
   download.file("https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/temperature.csv",
                 destfile = file.path(datapath,'temperature.csv'), method = "curl")
 
-  ## downloading energy_use_per_person.xlsx
+  # downlaoding wrangled_data.csv
+  download.file("https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/wrangled_data.csv",
+                destfile = file.path(datapath,'wrangled_data.csv'), method = "curl")
+
+  # downloading wrangled_US_data.csv
+  download.file("https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/data/wrangled_US_data.csv",
+                destfile = file.path(datapath,'wrangled_US_data.csv'), method = "curl")
+
+  # different method here because files are too large to have a raw.github link
+
+  # downloading energy_use_per_person.xlsx
   url = 'https://github.com/opencasestudies/ocs-bp-co2-emissions/blob/master/data/energy_use_per_person.xlsx?raw=true'
 
   GET(url, write_disk(tf <- tempfile(fileext = ".xlsx"))) # loading file from url
@@ -43,19 +57,20 @@ load_co2_data <- function(outpath=NULL){
 
   write.xlsx(energy, file = file.path(datapath, "energy_use_per_person.xlsx"), showNA=FALSE) # writing to .xlsx file
 
-  ## downloading gdp_per_capita_yearly_growth.xlsx
+  # downloading gdp_per_capita_yearly_growth.xlsx
   url = 'https://github.com/opencasestudies/ocs-bp-co2-emissions/blob/master/data/gdp_per_capita_yearly_growth.xlsx?raw=true'
 
   GET(url, write_disk(tf <- tempfile(fileext = ".xlsx"))) # loading file from url
-  capita <- read_excel(tf, sheet = 1)
+  gdp <- read_excel(tf, sheet = 1)
 
-  write.xlsx(capita, file = file.path(datapath, "gdp_per_capita_yearly_growth.xlsx"), showNA=FALSE) # writing to .xlsx file
+  write.xlsx(gdp, file = file.path(datapath, "gdp_per_capita_yearly_growth.xlsx"), showNA=FALSE) # writing to .xlsx file
 
-  ## downloading yearly_co2_emissions_1000_tonnes.xlsx
+  # downloading yearly_co2_emissions_1000_tonnes.xlsx
   url = 'https://github.com/opencasestudies/ocs-bp-co2-emissions/blob/master/data/yearly_co2_emissions_1000_tonnes.xlsx?raw=true'
 
   GET(url, write_disk(tf <- tempfile(fileext = ".xlsx"))) # loading file from url
   emissions <- read_excel(tf, sheet = 1)
 
   write.xlsx(emissions, file = file.path(datapath, "yearly_co2_emissions_1000_tonnes.xlsx"), showNA=FALSE) # writing to .xlsx file
+
 }
