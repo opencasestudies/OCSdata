@@ -4,11 +4,15 @@
 \alias{load_co2_repo}
 \title{Load CO2 Emissions Repository}
 \usage{
-load_co2_repo(outpath = NULL)
+load_co2_repo(outpath = NULL, fork_repo = NA)
 }
 \arguments{
 \item{outpath}{character string, path to the directory where the downloaded
 repository should be saved to.}
+
+\item{fork_repo}{logical, FALSE will clone the repo, while TRUE will fork the repo and then clone the fork.
+Default is NA, which will check if you are allowed to push to the repository or not. If you can, the repo
+will be cloned. If you cannot push, the repo will be forked and cloned.}
 }
 \value{
 nothing useful is returned, a new R project will be loaded in the
@@ -25,6 +29,6 @@ it so all of the raw and wrangled data is downloaded using one function.
 Need to have a personal access token (PAT) to work.
 }
 \examples{
-load_co2_repo('/Users/michael/Desktop/')
+load_co2_repo('/Users/michael/Desktop/',TRUE)
 
 }

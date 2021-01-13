@@ -22,6 +22,6 @@ from GitHub and saves it in a new '/data' folder in your current working directo
 it so all of the relevant data needed to follow along the lesson is easily available in a local folder.
 }
 \examples{
-load_co2_data()
+load_co2_data('/Users/michael/Desktop/')
 
 }
