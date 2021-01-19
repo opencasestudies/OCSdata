@@ -27,5 +27,6 @@ wide_US
 \description{
 A dataset containing data on CO2 emissions, GDP growth, energy useage,
 natural disasters and average temperature in the United States since 1980.
+Source: https://github.com/opencasestudies/ocs-bp-co2-emissions/blob/master/data/wrangled_US_data.csv
 }
 \keyword{datasets}

@@ -26,5 +26,6 @@ data_long
 A dataset containing the amount of CO2 emitted by each country
 as well as GDP growth per year since 1949. CO2 emissions value
 reported in thousands of tonnes.
+Source: https://github.com/opencasestudies/ocs-bp-co2-emissions/blob/master/data/wrangled_data.csv
 }
 \keyword{datasets}
