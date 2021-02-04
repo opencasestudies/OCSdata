@@ -14,6 +14,7 @@
 #'
 #' @import tidyverse
 #' @importFrom httr GET
+#' @importFrom httr content
 #' @importFrom readxl read_excel
 #' @importFrom writexl write_xlsx
 #' @export
