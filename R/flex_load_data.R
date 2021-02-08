@@ -13,6 +13,7 @@
 #' appear in your files.
 #'
 #' @import tidyverse
+#' @importFrom dplyr %>%
 #' @importFrom writexl write_xlsx
 #' @export
 #'
