@@ -12,9 +12,12 @@
 #' @return Nothing useful is returned, a data folder will be downloaded and
 #' appear in your files.
 #'
-#' @import tidyverse
-#' @importFrom dplyr %>%
+#' @import magrittr
 #' @importFrom writexl write_xlsx
+#' @importFrom purrr map
+#' @importFrom httr GET
+#' @importFrom httr content
+#' @importFrom readxl read_excel
 #' @export
 #'
 #' @examples flex_load_data('/Users/michael/Desktop/')
