@@ -2,27 +2,53 @@
 % Please edit documentation in R/flex_load_data.R
 \name{flex_load_data}
 \alias{flex_load_data}
-\title{Download CO2 Emissions Data}
+\title{Download Open Case Study Data}
 \usage{
-flex_load_data(outpath = NULL)
+flex_load_data(casestudy, outpath = NULL)
 }
 \arguments{
+\item{casestudy}{character string, name of the case study to pull data from.
+The input name should follow the same naming scheme as the repository on GitHub:
+
+Rural and Urban Obesity: ocs-bp-rural-and-urban-obesity
+
+Air Pollution: ocs-bp-air-pollution
+
+Vaping: ocs-bp-vaping-case-study
+
+Opioids: ocs-bp-opioid-rural-urban
+
+Right-to-Carry Part 1: ocs-bp-RTC-wrangling
+
+Right-to-Carry Part 2: ocs-bp-RTC-analysis
+
+Youth Disconnection: ocs-bp-youth-disconnection
+
+Youth Mental Health: ocs-bp-youth-mental-health
+
+School Shootings: ocs-bp-school-shootings-dashboard
+
+CO2 Emissions: ocs-bp-co2-emissions
+
+Dietary Behaviors: ocs-bp-diet}
+
 \item{outpath}{character string, path to the directory where the downloaded
 data folder should be saved to.}
 }
 \value{
-Nothing useful is returned, a data folder will be downloaded and
-appear in your files.
+Nothing useful is returned, a data and docs folder will be downloaded and
+appear in your directory.
 }
 \description{
-Download the CO2 Emissions case study data into a new folder in your current working directory.
+Download the specified case study data to use as you follow along the case study.
 }
 \details{
-This function downloads the OCS CO2 emissions case study data
-from GitHub and saves it in a new '/data' folder in your current working directory. This makes
-it so all of the relevant data needed to follow along the lesson is easily available in a local folder.
+This function downloads the Open Case Study data
+from GitHub and saves it in a new '/data' and '/docs' folder in
+the specified directory. This makes it so all of the relevant data needed
+to execute the steps given in the case study are easily available in a local folder.
 }
 \examples{
-flex_load_data('/Users/michael/Desktop/')
+flex_load_data('ocs-bp-co2-emissions')
 
 }

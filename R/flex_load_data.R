@@ -1,37 +1,72 @@
-#' Download CO2 Emissions Data
+#' Download Open Case Study Data
 #'
-#' Download the CO2 Emissions case study data into a new folder in your current working directory.
+#' Download the specified case study data to use as you follow along the case study.
 #'
-#' @details This function downloads the OCS CO2 emissions case study data
-#' from GitHub and saves it in a new '/data' folder in your current working directory. This makes
-#' it so all of the relevant data needed to follow along the lesson is easily available in a local folder.
+#' @details This function downloads the Open Case Study data
+#' from GitHub and saves it in a new '/data' and '/docs' folder in
+#' the specified directory. This makes it so all of the relevant data needed
+#' to execute the steps given in the case study are easily available in a local folder.
+#'
+#' @param casestudy character string, name of the case study to pull data from.
+#' The input name should follow the same naming scheme as the repository on GitHub:
+#'
+#' Rural and Urban Obesity: ocs-bp-rural-and-urban-obesity
+#'
+#' Air Pollution: ocs-bp-air-pollution
+#'
+#' Vaping: ocs-bp-vaping-case-study
+#'
+#' Opioids: ocs-bp-opioid-rural-urban
+#'
+#' Right-to-Carry Part 1: ocs-bp-RTC-wrangling
+#'
+#' Right-to-Carry Part 2: ocs-bp-RTC-analysis
+#'
+#' Youth Disconnection: ocs-bp-youth-disconnection
+#'
+#' Youth Mental Health: ocs-bp-youth-mental-health
+#'
+#' School Shootings: ocs-bp-school-shootings-dashboard
+#'
+#' CO2 Emissions: ocs-bp-co2-emissions
+#'
+#' Dietary Behaviors: ocs-bp-diet
 #'
 #' @param outpath character string, path to the directory where the downloaded
 #' data folder should be saved to.
 #'
-#' @return Nothing useful is returned, a data folder will be downloaded and
-#' appear in your files.
+#' @return Nothing useful is returned, a data and docs folder will be downloaded and
+#' appear in your directory.
 #'
 #' @import magrittr
-#' @importFrom writexl write_xlsx
+#' @importFrom WriteXLS WriteXLS
 #' @importFrom purrr map
 #' @importFrom httr GET
 #' @importFrom httr content
 #' @importFrom readxl read_excel
+#' @importFrom stringr str_sub
 #' @export
 #'
-#' @examples flex_load_data('/Users/michael/Desktop/')
+#' @examples flex_load_data('ocs-bp-co2-emissions')
 #'
-flex_load_data <- function(outpath=NULL){
+flex_load_data <- function(casestudy, outpath = NULL){
   if (is.null(outpath)) {
     outpath = getwd() # path to working directory
   }
   datapath = file.path(outpath,'data') # path to new data folder directory
   dir.create(datapath) # creating data folder
 
+  wrangledpath = file.path(datapath,'Wrangled') # path to Wrangled data subfolder
+  dir.create(wrangledpath)
+
+  docspath = file.path(outpath,'docs') # path to new docs folder directory
+  dir.create(docspath)
+
   # getting repo webpage data
-  co2_repo = GET(url="https://api.github.com/repos/opencasestudies/ocs-bp-co2-emissions/git/trees/master?recursive=1")
-  paths = content(co2_repo) %>% unlist(recursive = FALSE) %>% map('path') # creating list of just the file paths in the repo
+  repo_url = paste0("https://api.github.com/repos/opencasestudies/",
+                    casestudy, "/git/trees/master?recursive=1") # creating repo url string
+  repo = GET(url=repo_url)
+  paths = content(repo) %>% unlist(recursive = FALSE) %>% map('path') # creating list of just the file paths in the repo
   paths = paths[!sapply(paths,is.null)] # removing null values
 
   for (fname in paths){
@@ -39,18 +74,50 @@ flex_load_data <- function(outpath=NULL){
       if (grepl('.csv', fname, fixed = TRUE)) { # if .csv file
 
         # download the .csv file
-        download.file(paste0("https://raw.githubusercontent.com/opencasestudies/ocs-bp-co2-emissions/master/",fname),
+        download.file(paste0("https://raw.githubusercontent.com/opencasestudies/",casestudy,"/master/",fname),
                       destfile = file.path(outpath,fname), method = "curl")
 
-      } else if (grepl('.xlsx', fname, fixed = TRUE)) { # if .xlsx file
+      } else if (grepl('.xls', fname, fixed = TRUE)) { # if .xls(x) file
 
-        # download the .xlsx file, different method here because files are too large to have a raw.github link
-        url = paste0('https://github.com/opencasestudies/ocs-bp-co2-emissions/blob/master/',fname,'?raw=true')
+        url = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true')
 
-        GET(url, write_disk(tf <- tempfile(fileext = ".xlsx"))) # loading file from url
-        file_data = read_excel(tf, sheet = 1)
+        if (str_sub(fname,-1) == 'x') { # if .xlsx
 
-        write_xlsx(file_data, path = file.path(outpath, fname)) # writing to .xlsx file in data directory
+          # download the .xlsx file, different method here because files are too large to have a raw.github link
+          GET(url, write_disk(tf <- tempfile(fileext = ".xlsx"))) # loading with temp .xlsx file from url
+
+        } else { # if .xls
+
+          GET(url, write_disk(tf <- tempfile(fileext = ".xls"))) # loading with temp .xls file from url
+
+        }
+
+        file_data = read_excel(tf, sheet = 1) # creating dataframe from file
+        WriteXLS(file_data, ExcelFileName = file.path(outpath, fname)) # writing to .xls file in data directory
+      }
+    } else if (grepl('docs/', fname, fixed = TRUE)) { # if file is in the docs directory
+
+      if (grepl('.csv', fname, fixed = TRUE)) { # if .csv file
+
+        # download the .csv file
+        download.file(paste0("https://raw.githubusercontent.com/opencasestudies/",casestudy,"/master/",fname),
+                      destfile = file.path(outpath,fname), method = "curl")
+
+      } else if (grepl('.xls', fname, fixed = TRUE)) { # if .xls(x) file
+
+        url = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true')
+        if (str_sub(fname,-1) == 'x') { # if .xlsx
+
+          # download the .xlsx file, different method here because files are too large to have a raw.github link
+          GET(url, write_disk(tf <- tempfile(fileext = ".xlsx"))) # loading with temp .xlsx file from url
+
+        } else { # if .xls
+
+          GET(url, write_disk(tf <- tempfile(fileext = ".xls"))) # loading with temp .xls file from url
+        }
+
+        file_data = read_excel(tf, sheet = 1) # creating dataframe from file
+        WriteXLS(file_data, ExcelFileName = file.path(outpath, fname)) # writing to .xls file in data directory
       }
     }
   }
