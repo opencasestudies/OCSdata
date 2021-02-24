@@ -1,10 +1,10 @@
-#' Download Open Case Study Raw Data
+#' Download Open Case Study Wrangled Data
 #'
-#' Download the specified case study raw data to use as you follow along the case study.
+#' Download the specified case study wrangled data to use as you follow along the case study.
 #'
 #' @details This function downloads the Open Case Study raw data
-#' from GitHub and saves it in a new 'data/raw/' folder in
-#' the specified directory. This makes it so all the raw data
+#' from GitHub and saves it in a new 'data/wrangled/' folder in
+#' the specified directory. This makes it so all the simpler import data
 #' are easily available in a local folder to be processed and wrangled.
 #'
 #' @param casestudy character string, name of the case study to pull data from.
@@ -35,7 +35,7 @@
 #' @param outpath character string, path to the directory where the downloaded
 #' data folder should be saved to.
 #'
-#' @return Nothing useful is returned, a data/raw folder will be downloaded and
+#' @return Nothing useful is returned, a data/wrangled folder will be downloaded and
 #' appear in your directory.
 #'
 #' @import magrittr
@@ -47,17 +47,17 @@
 #' @importFrom stringr str_sub
 #' @export
 #'
-#' @examples load_raw_data('ocs-bp-co2-emissions')
+#' @examples load_wrangled_data('ocs-bp-co2-emissions')
 #'
-load_raw_data <- function(casestudy, outpath = NULL){
+load_wrangled_data <- function(casestudy, outpath = NULL){
   if (is.null(outpath)) {
     outpath = getwd() # path to working directory
   }
   datapath = file.path(outpath,'data') # path to new data folder directory
   dir.create(datapath) # creating data folder
 
-  rawpath = file.path(datapath,'raw') # path to raw data subfolder
-  dir.create(rawpath)
+  wrangledpath = file.path(datapath,'wrangled') # path to wrangled data subfolder
+  dir.create(wrangledpath) # creating wrangled folder
 
   # getting repo webpage data
   repo_url = paste0("https://api.github.com/repos/opencasestudies/",
@@ -68,7 +68,7 @@ load_raw_data <- function(casestudy, outpath = NULL){
 
   for (fname in paths){
     if (grepl('data/', fname, fixed = TRUE)) { # if file is in the data directory
-      if (grepl('/raw/', fname, fixed = TRUE)) {
+      if (grepl('/wrangled/', fname, fixed = TRUE)) {
         if (grepl('.csv', fname, fixed = TRUE)) { # if .csv file
 
           # download the .csv file
