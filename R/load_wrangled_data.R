@@ -77,21 +77,27 @@ load_wrangled_data <- function(casestudy, outpath = NULL){
 
         } else if (grepl('.xls', fname, fixed = TRUE)) { # if .xls(x) file
 
-          url = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true')
+          githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true')
 
           if (str_sub(fname,-1) == 'x') { # if .xlsx
 
             # download the .xlsx file, different method here because files are too large to have a raw.github link
-            GET(url, write_disk(tf <- tempfile(fileext = ".xlsx"))) # loading with temp .xlsx file from url
+            GET(githuburl, write_disk(tf <- tempfile(fileext = ".xlsx"))) # loading with temp .xlsx file from url
 
           } else { # if .xls
 
-            GET(url, write_disk(tf <- tempfile(fileext = ".xls"))) # loading with temp .xls file from url
+            GET(githuburl, write_disk(tf <- tempfile(fileext = ".xls"))) # loading with temp .xls file from url
 
           }
 
           file_data = read_excel(tf, sheet = 1) # creating dataframe from file
           WriteXLS(file_data, ExcelFileName = file.path(outpath, fname)) # writing to .xls file in data directory
+
+        } else if (grepl('.rda', fname, fixed = TRUE)) { # if .rda file
+          # load the r object into the global environment from the .rda file link
+          githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true')
+          load(url(githuburl), envir = globalenv())
+
         }
       }
     }
