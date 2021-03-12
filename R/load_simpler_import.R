@@ -38,13 +38,8 @@
 #' @return Nothing useful is returned, a data/simpler_import folder will be downloaded and
 #' appear in your directory.
 #'
-#' @import magrittr
-#' @importFrom WriteXLS WriteXLS
+#' @import httr
 #' @importFrom purrr map
-#' @importFrom httr GET
-#' @importFrom httr content
-#' @importFrom readxl read_excel
-#' @importFrom stringr str_sub
 #' @export
 #'
 #' @examples load_simpler_import('ocs-bp-co2-emissions')
@@ -62,41 +57,39 @@ load_simpler_import <- function(casestudy, outpath = NULL){
   # getting repo webpage data
   repo_url = paste0("https://api.github.com/repos/opencasestudies/",
                     casestudy, "/git/trees/master?recursive=1") # creating repo url string
+
   repo = GET(url=repo_url)
-  paths = content(repo) %>% unlist(recursive = FALSE) %>% map('path') # creating list of just the file paths in the repo
+  repocont = content(repo)
+  repounlist = unlist(repocont, recursive = FALSE)
+  paths = map(repounlist,'path') # creating list of just the file paths in the repo
   paths = paths[!sapply(paths,is.null)] # removing null values
 
   for (fname in paths){
     if (grepl('data/', fname, fixed = TRUE)) { # if file is in the data directory
       if (grepl('/simpler_import/', fname, fixed = TRUE)) {
+
+        githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true') # github file link
+
         if (grepl('.csv', fname, fixed = TRUE)) { # if .csv file
 
-          # download the .csv file
-          download.file(paste0("https://raw.githubusercontent.com/opencasestudies/",casestudy,"/master/",fname),
-                        destfile = file.path(outpath,fname), method = "curl")
+            # download the .csv file
+            download.file(paste0("https://raw.githubusercontent.com/opencasestudies/",casestudy,"/master/",fname),
+                          destfile = file.path(outpath,fname), method = "curl")
 
         } else if (grepl('.xls', fname, fixed = TRUE)) { # if .xls(x) file
 
-          githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true')
-
-          if (str_sub(fname,-1) == 'x') { # if .xlsx
-
-            # download the .xlsx file, different method here because files are too large to have a raw.github link
-            GET(githuburl, write_disk(tf <- tempfile(fileext = ".xlsx"))) # loading with temp .xlsx file from url
-
-          } else { # if .xls
-
-            GET(githuburl, write_disk(tf <- tempfile(fileext = ".xls"))) # loading with temp .xls file from url
-
-          }
-
-          file_data = read_excel(tf, sheet = 1) # creating dataframe from file
-          WriteXLS(file_data, ExcelFileName = file.path(outpath, fname)) # writing to .xls file in data directory
+            # download the .xls(x) file
+            GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
 
         } else if (grepl('.rda', fname, fixed = TRUE)) { # if .rda file
-        # load the r object into the global environment from the .rda file link
-        githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true')
-        load(url(githuburl), envir = globalenv())
+
+            # load the r object into the global environment from the .rda file link
+            load(url(githuburl), envir = globalenv())
+
+        } else if (grepl('.pdf',fname, fixed = TRUE)) {
+
+          # download the .pdf file
+          GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
 
         }
       }

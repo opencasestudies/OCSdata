@@ -1,11 +1,11 @@
-#' Download Open Case Study Wrangled Data
+#' Download Open Case Study Extra Data
 #'
-#' Download the specified case study wrangled data to use as you follow along the case study.
+#' Download the specified case study extra data to use as you wish.
 #'
-#' @details This function downloads the Open Case Study wrangled data
-#' from GitHub and saves it in a new 'data/wrangled/' folder in
-#' the specified directory. This makes it so all the wrangled data
-#' are easily available in a local folder to be analyzed.
+#' @details This function downloads the Open Case Study extra data
+#' from GitHub and saves it in a new 'data/extra/' folder in
+#' the specified directory. This makes it so all the extra data
+#' are easily available in a local folder for your use.
 #'
 #' @param casestudy character string, name of the case study to pull data from.
 #' The input name should follow the same naming scheme as the repository on GitHub:
@@ -35,29 +35,28 @@
 #' @param outpath character string, path to the directory where the downloaded
 #' data folder should be saved to.
 #'
-#' @return Nothing useful is returned, a data/wrangled folder will be downloaded and
+#' @return Nothing useful is returned, a data/extra folder will be downloaded and
 #' appear in your directory.
 #'
 #' @import httr
 #' @importFrom purrr map
 #' @export
 #'
-#' @examples load_wrangled_data('ocs-bp-co2-emissions')
+#' @examples load_extra_data('ocs-bp-co2-emissions')
 #'
-load_wrangled_data <- function(casestudy, outpath = NULL){
+load_extra_data <- function(casestudy, outpath = NULL){
   if (is.null(outpath)) {
     outpath = getwd() # path to working directory
   }
   datapath = file.path(outpath,'data') # path to new data folder directory
   dir.create(datapath) # creating data folder
 
-  wrangledpath = file.path(datapath,'wrangled') # path to wrangled data subfolder
-  dir.create(wrangledpath) # creating wrangled folder
+  extrapath = file.path(datapath,'extra') # path to extra data subfolder
+  dir.create(extrapath)
 
   # getting repo webpage data
   repo_url = paste0("https://api.github.com/repos/opencasestudies/",
                     casestudy, "/git/trees/master?recursive=1") # creating repo url string
-
   repo = GET(url=repo_url)
   repocont = content(repo)
   repounlist = unlist(repocont, recursive = FALSE)
@@ -66,7 +65,7 @@ load_wrangled_data <- function(casestudy, outpath = NULL){
 
   for (fname in paths){
     if (grepl('data/', fname, fixed = TRUE)) { # if file is in the data directory
-      if (grepl('/wrangled/', fname, fixed = TRUE)) {
+      if (grepl('/extra/', fname, fixed = TRUE)) {
 
         githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true') # github file link
 
