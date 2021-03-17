@@ -48,11 +48,6 @@ load_imported_data <- function(casestudy, outpath = NULL){
   if (is.null(outpath)) {
     outpath = getwd() # path to working directory
   }
-  datapath = file.path(outpath,'data') # path to new data folder directory
-  dir.create(datapath) # creating data folder
-
-  importpath = file.path(datapath,'imported') # path to raw data subfolder
-  dir.create(importpath)
 
   # getting repo webpage data
   repo_url = paste0("https://api.github.com/repos/opencasestudies/",
@@ -69,27 +64,10 @@ load_imported_data <- function(casestudy, outpath = NULL){
 
         githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true') # github file link
 
-        if (grepl('.csv', fname, fixed = TRUE)) { # if .csv file
-
-          # download the .csv file
-          download.file(paste0("https://raw.githubusercontent.com/opencasestudies/",casestudy,"/master/",fname),
-                        destfile = file.path(outpath,fname), method = "curl")
-
-        } else if (grepl('.xls', fname, fixed = TRUE)) { # if .xls(x) file
-
-          # download the .xls(x) file
-          GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
-
-        } else if (grepl('.rda', fname, fixed = TRUE)) { # if .rda file
+        if (grepl('.rda', fname, fixed = TRUE)) { # if .rda file
 
           # load the r object into the global environment from the .rda file link
           load(url(githuburl), envir = globalenv())
-
-        } else if (grepl('.pdf',fname, fixed = TRUE)) {
-
-          # download the .pdf file
-          GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
-
         }
       }
     }
