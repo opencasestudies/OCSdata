@@ -76,19 +76,14 @@ load_simpler_import <- function(casestudy, outpath = NULL){
             download.file(paste0("https://raw.githubusercontent.com/opencasestudies/",casestudy,"/master/",fname),
                           destfile = file.path(outpath,fname), method = "curl")
 
-        } else if (grepl('.xls', fname, fixed = TRUE)) { # if .xls(x) file
-
-            # download the .xls(x) file
-            GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
-
         } else if (grepl('.rda', fname, fixed = TRUE)) { # if .rda file
 
             # load the r object into the global environment from the .rda file link
             load(url(githuburl), envir = globalenv())
 
-        } else if (grepl('.pdf',fname, fixed = TRUE)) {
+        } else {
 
-          # download the .pdf file
+          # download the file
           GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
 
         }

@@ -4,7 +4,7 @@
 \alias{load_imported_data}
 \title{Download Open Case Study Imported Data}
 \usage{
-load_imported_data(casestudy, outpath = NULL)
+load_imported_data(casestudy)
 }
 \arguments{
 \item{casestudy}{character string, name of the case study to pull data from.
@@ -31,22 +31,18 @@ ocs-bp-school-shootings-dashboard
 ocs-bp-co2-emissions
 
 ocs-bp-diet}
-
-\item{outpath}{character string, path to the directory where the downloaded
-data folder should be saved to.}
 }
 \value{
-Nothing useful is returned, a data/imported folder will be downloaded and
-appear in your directory.
+Nothing useful is returned, R objects will be loaded into the global environment.
 }
 \description{
-Download the specified case study imported data to use as you follow along the case study.
+Load the specified case study imported data into your global environment
+to use as you follow along the case study.
 }
 \details{
 This function downloads the Open Case Study imported data
-from GitHub and saves it in a new 'data/imported/' folder in
-the specified directory. This makes it so all the imported data
-are easily available in a local folder to be processed and wrangled.
+from GitHub and loads it into your global environment as variables.
+This makes it so all the imported data are immediately available to be wrangled and analzed.
 }
 \examples{
 load_imported_data('ocs-bp-co2-emissions')
