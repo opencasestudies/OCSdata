@@ -10,27 +10,27 @@ load_simpler_import(casestudy, outpath = NULL)
 \item{casestudy}{character string, name of the case study to pull data from.
 The input name should follow the same naming scheme as the repository on GitHub:
 
-Rural and Urban Obesity: ocs-bp-rural-and-urban-obesity
+ocs-bp-rural-and-urban-obesity
 
-Air Pollution: ocs-bp-air-pollution
+ocs-bp-air-pollution
 
-Vaping: ocs-bp-vaping-case-study
+ocs-bp-vaping-case-study
 
-Opioids: ocs-bp-opioid-rural-urban
+ocs-bp-opioid-rural-urban
 
-Right-to-Carry Part 1: ocs-bp-RTC-wrangling
+ocs-bp-RTC-wrangling (Right-to-Carry Part 1)
 
-Right-to-Carry Part 2: ocs-bp-RTC-analysis
+ocs-bp-RTC-analysis (Right-to-Carry Part 2)
 
-Youth Disconnection: ocs-bp-youth-disconnection
+ocs-bp-youth-disconnection
 
-Youth Mental Health: ocs-bp-youth-mental-health
+ocs-bp-youth-mental-health
 
-School Shootings: ocs-bp-school-shootings-dashboard
+ocs-bp-school-shootings-dashboard
 
-CO2 Emissions: ocs-bp-co2-emissions
+ocs-bp-co2-emissions
 
-Dietary Behaviors: ocs-bp-diet}
+ocs-bp-diet}
 
 \item{outpath}{character string, path to the directory where the downloaded
 data folder should be saved to.}
