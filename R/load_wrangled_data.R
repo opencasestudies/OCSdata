@@ -49,7 +49,7 @@ load_wrangled_data <- function(casestudy, outpath = NULL){
     outpath = getwd() # path to working directory
   }
   datapath = file.path(outpath,'data') # path to new data folder directory
-  dir.create(datapath) # creating data folder
+  dir.create(datapath, showWarnings = FALSE) # creating data folder
 
   wrangledpath = file.path(datapath,'wrangled') # path to wrangled data subfolder
   dir.create(wrangledpath) # creating wrangled folder
@@ -67,24 +67,26 @@ load_wrangled_data <- function(casestudy, outpath = NULL){
   for (fname in paths){
     if (grepl('data/', fname, fixed = TRUE)) { # if file is in the data directory
       if (grepl('/wrangled/', fname, fixed = TRUE)) {
+        if (grepl('.', fname, fixed = TRUE)) {
 
-        githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true') # github file link
+          githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true') # github file link
 
-        if (grepl('.csv', fname, fixed = TRUE)) { # if .csv file
+          if (grepl('.rda', fname, fixed = TRUE)) { # if .rda file
 
-          # download the .csv file
-          download.file(paste0("https://raw.githubusercontent.com/opencasestudies/",casestudy,"/master/",fname),
-                        destfile = file.path(outpath,fname), method = "curl")
+            # load the r object into the global environment from the .rda file link
+            load(url(githuburl), envir = globalenv())
 
-        } else if (grepl('.rda', fname, fixed = TRUE)) { # if .rda file
+          } else {
 
-          # load the r object into the global environment from the .rda file link
-          load(url(githuburl), envir = globalenv())
+            # download the file
+            GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
+
+          }
 
         } else {
-
-          # download the file
-          GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
+          # create sub-folder if needed
+          subpath = file.path(outpath, fname)
+          dir.create(subpath)
 
         }
       }
