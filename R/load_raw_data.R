@@ -33,7 +33,7 @@
 #' ocs-bp-diet
 #'
 #' @param outpath character string, path to the directory where the downloaded
-#' data folder should be saved to.
+#' data folder should be saved.
 #'
 #' @return Nothing useful is returned, a data/raw folder will be downloaded and
 #' appear in your directory.
