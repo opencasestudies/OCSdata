@@ -33,7 +33,7 @@ ocs-bp-co2-emissions
 ocs-bp-diet}
 
 \item{outpath}{character string, path to the directory where the downloaded
-data folder should be saved to.}
+data folder should be saved.}
 }
 \value{
 Nothing useful is returned, a data/raw folder will be downloaded and
