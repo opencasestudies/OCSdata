@@ -15,11 +15,13 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    runs-on: [macOS-latest, windows-latest]
+  test:
     strategy:
       matrix:
+        platform: [macos-latest, windows-latest]
         r-version: [3.5, 3.6, 4.0]
+    runs-on: ${{ matrix.platform }}
+        
 
     steps:
       - uses: actions/checkout@v2
