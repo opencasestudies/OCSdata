@@ -1,12 +1,12 @@
-#' Download Case Study Repository
+#' Clone Case Study Repository
 #'
-#' Download the specified case study repository and save it as a new R project in a local directory.
+#' Clone the specified case study repository and save it as a new R project in a local directory.
 #' Need to have a personal access token (PAT) registered to work.
 #'
-#' @details This function downloads the specified OCS case study repository
+#' @details This function clones the specified OCS case study repository
 #' from GitHub and saves it as a new R project in a local directory. This makes
 #' it so the case study repository, including all of the code, data, and document
-#' files, are downloaded with a single function.
+#' files, are cloned in git and downloaded with a single function.
 #' Need to have a personal access token (PAT) to work.
 #'
 #' @param casestudy character string, name of the case study to clone repository from.
