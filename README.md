@@ -11,3 +11,6 @@ OCSdata is an R package to help you access and download the data files used in a
 devtools::install_github("opencasestudies/OCSdata")
 ```
 
+## Examples
+
+These examples assume you'd like to download the data files into your current working directory. If you'd like to download them elsewhere, specify the directory to save files to in the `outpath` argument. 
