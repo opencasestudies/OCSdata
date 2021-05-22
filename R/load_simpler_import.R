@@ -42,7 +42,7 @@
 #' @importFrom purrr map
 #' @export
 #'
-#' @examples load_simpler_import('ocs-bp-co2-emissions')
+#' @examples load_simpler_import('ocs-bp-opioid-rural-urban')
 #'
 load_simpler_import <- function(casestudy, outpath = NULL){
   if (is.null(outpath)) {
