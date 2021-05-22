@@ -37,7 +37,10 @@ load_repo("ocs-bp-opioid-rural-urban")
 
 # Clone the case study GitHub repository: 
 clone_ocs_repo("ocs-bp-opioid-rural-urban", fork_repo = FALSE)
-# Setting fork_repo = TRUE will fork the repo first and then clone the fork, while FALSE will clone the repo directly from the Open Case Studies GitHub. The default is fork_repo = NA, which will fork or clone based on your repository permissions. This function requires your personal GitHub PAT to be registered in Rstudio. 
+# Setting fork_repo = TRUE will fork the repo first and then clone the fork, 
+# while FALSE will clone the repo directly from the Open Case Studies GitHub. 
+# The default is fork_repo = NA, which will fork or clone based on your repository 
+# permissions. This function requires your personal GitHub PAT to be registered in Rstudio. 
 ```
 
 These examples use the [Opioids in United States](https://github.com/opencasestudies/ocs-bp-opioid-rural-urban) case study, but you can use these functions with any of our case studies. Just make sure the input uses the name of the case study repository on GitHub, like so: 
