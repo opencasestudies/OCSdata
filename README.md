@@ -53,9 +53,9 @@ ocs-bp-vaping-case-study
 
 ocs-bp-opioid-rural-urban
 
-ocs-bp-RTC-wrangling (Right-to-Carry Part 1)
+ocs-bp-RTC-wrangling
 
-ocs-bp-RTC-analysis (Right-to-Carry Part 2)
+ocs-bp-RTC-analysis
 
 ocs-bp-youth-disconnection
 
