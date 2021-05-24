@@ -43,29 +43,21 @@ clone_ocs_repo("ocs-bp-opioid-rural-urban", fork_repo = FALSE)
 # permissions. This function requires your personal GitHub PAT to be registered in RStudio. 
 ```
 
-These examples use the [Opioids in United States](https://github.com/opencasestudies/ocs-bp-opioid-rural-urban) case study, but you can use these functions with any of our case studies. Just make sure the input uses the name of the case study repository on GitHub, like so: 
+These examples use the [Opioids in United States](https://github.com/opencasestudies/ocs-bp-opioid-rural-urban) case study, but you can use these functions with any of our case studies. Just make sure the input uses the name of the case study repository on GitHub, like so:
 
-ocs-bp-rural-and-urban-obesity
-
-ocs-bp-air-pollution
-
-ocs-bp-vaping-case-study
-
-ocs-bp-opioid-rural-urban
-
-ocs-bp-RTC-wrangling
-
-ocs-bp-RTC-analysis
-
-ocs-bp-youth-disconnection
-
-ocs-bp-youth-mental-health
-
-ocs-bp-school-shootings-dashboard
-
-ocs-bp-co2-emissions
-
-ocs-bp-diet
+| Case Study Name | Case Study ID |  
+| --------------- | ------------- |
+| [Exploring global patterns of obesity across rural and urban regions](https://www.opencasestudies.org/ocs-bp-rural-and-urban-obesity/) | [ocs-bp-rural-and-urban-obesity](https://github.com/opencasestudies/ocs-bp-rural-and-urban-obesity) |
+| [Predicting Annual Air Pollution](https://www.opencasestudies.org/ocs-bp-air-pollution/) | [ocs-bp-air-pollution](https://github.com/opencasestudies/ocs-bp-air-pollution) |
+| [Vaping Behaviors in American Youth](https://www.opencasestudies.org/ocs-bp-vaping-case-study/) | [ocs-bp-vaping-case-study](https://github.com/opencasestudies/ocs-bp-vaping-case-study) |
+| [Opioids in United States](https://www.opencasestudies.org/ocs-bp-opioid-rural-urban/) | [ocs-bp-opioid-rural-urban](https://github.com/opencasestudies/ocs-bp-opioid-rural-urban) |
+| [Influence of Multicollinearity on Measured Impact of Right-to-Carry Gun Laws Part 1](https://www.opencasestudies.org/ocs-bp-RTC-wrangling/) | [ocs-bp-RTC-wrangling](https://github.com/opencasestudies/ocs-bp-RTC-wrangling) |
+| [Influence of Multicollinearity on Measured Impact of Right-to-Carry Gun Laws Part 2](https://www.opencasestudies.org/ocs-bp-RTC-analysis/) | [ocs-bp-RTC-analysis](https://github.com/opencasestudies/ocs-bp-RTC-analysis) |
+| [Disparities in Youth Disconnection](https://www.opencasestudies.org/ocs-bp-youth-disconnection/) | [ocs-bp-youth-disconnection](https://github.com/opencasestudies/ocs-bp-youth-disconnection) |
+| [Mental Health of American Youth](https://www.opencasestudies.org/ocs-bp-youth-mental-health/) | [ocs-bp-youth-mental-health](https://github.com/opencasestudies/ocs-bp-youth-mental-health) |
+| [School Shootings in the United States](https://www.opencasestudies.org/ocs-bp-school-shootings-dashboard/) | [ocs-bp-school-shootings-dashboard](https://github.com/opencasestudies/ocs-bp-school-shootings-dashboard) |
+| [Exploring CO2 emissions across time](https://www.opencasestudies.org/ocs-bp-co2-emissions/) | [ocs-bp-co2-emissions](https://github.com/opencasestudies/ocs-bp-co2-emissions) |
+| [Exploring global patterns of dietary behaviors associated with health risk](https://www.opencasestudies.org/ocs-bp-diet/) | [ocs-bp-diet](https://github.com/opencasestudies/ocs-bp-diet) |
 
 ## Why Use OCSdata?
 
