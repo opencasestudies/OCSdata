@@ -19,31 +19,33 @@ These examples assume you'd like to download the data files into your current wo
 library(OCSdata)
 
 # Starting at data import section:
-load_raw_data("ocs-bp-opioid-rural-urban")
+load_raw_data("ocs-bp-opioid-rural-urban", outpath = getwd())
 # for file formats that are easier to import:
-load_simpler_import("ocs-bp-opioid-rural-urban")
+load_simpler_import("ocs-bp-opioid-rural-urban", outpath = getwd())
 
 # Starting at data exploration/wrangling sections: 
-load_imported_data("ocs-bp-opioid-rural-urban")
+load_imported_data("ocs-bp-opioid-rural-urban", outpath = getwd())
 
 # Starting at data visualization/analysis sections:
-load_wrangled_data("ocs-bp-opioid-rural-urban")
+load_wrangled_data("ocs-bp-opioid-rural-urban", outpath = getwd())
 
 # Looking for more data on this topic: 
-load_extra_data("ocs-bp-opioid-rural-urban")
+load_extra_data("ocs-bp-opioid-rural-urban", outpath = getwd())
 
 # Download all repository files: 
-load_repo("ocs-bp-opioid-rural-urban")
+load_repo("ocs-bp-opioid-rural-urban", outpath = getwd())
 
 # Clone the case study GitHub repository: 
-clone_ocs_repo("ocs-bp-opioid-rural-urban", fork_repo = FALSE)
+clone_ocs_repo("ocs-bp-opioid-rural-urban", outpath = getwd(), fork_repo = FALSE)
 # Setting fork_repo = TRUE will fork the repo first and then clone the fork, 
 # while FALSE will clone the repo directly from the Open Case Studies GitHub. 
 # The default is fork_repo = NA, which will fork or clone based on your repository 
 # permissions. This function requires your personal GitHub PAT to be registered in RStudio. 
-```
 
-These examples use the [Opioids in United States](https://github.com/opencasestudies/ocs-bp-opioid-rural-urban) case study, but you can use these functions with any of our case studies. Just make sure the input uses the name of the case study repository on GitHub, like so:
+```
+*Note: The default argument for* `outpath` *will download the files to your current working directory.* `outpath = getwd()` *is redundant, but used here to illustrate that the download location can be specified.*
+
+These examples use the [Opioids in United States](https://github.com/opencasestudies/ocs-bp-opioid-rural-urban) case study, but you can use these functions with any of our case studies. Make sure to use the **Case Study ID** for the `casestudy` argument. See below to find your case study's ID:
 
 | Case Study Name | Case Study ID |  
 | --------------- | ------------- |
