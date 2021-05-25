@@ -54,5 +54,5 @@ clone_ocs_repo <- function(casestudy, outpath=NULL,fork_repo=NA){
     outpath = getwd()
   }
     create_from_github(paste0('opencasestudies/',casestudy), destdir = outpath,
-                       fork = fork_repo)
+                       fork = fork_repo, open = FALSE)
 }
