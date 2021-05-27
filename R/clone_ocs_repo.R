@@ -47,12 +47,12 @@
 #' @importFrom usethis create_from_github
 #' @export
 #'
-#' @examples clone_ocs_repo('ocs-bp-co2-emissions', fork_repo = TRUE)
+#' @examples clone_ocs_repo("ocs-bp-co2-emissions", outpath = "../", fork_repo = TRUE)
 #'
 clone_ocs_repo <- function(casestudy, outpath=NULL,fork_repo=NA){
   if (is.null(outpath)) {
     outpath = getwd()
   }
     create_from_github(paste0('opencasestudies/',casestudy), destdir = outpath,
-                       fork = fork_repo)
+                       fork = fork_repo, open = FALSE)
 }
