@@ -49,6 +49,6 @@ the specified directory. This makes it so all the simpler import data
 are easily available in a local folder to be processed and wrangled.
 }
 \examples{
-load_simpler_import('ocs-bp-opioid-rural-urban')
+load_simpler_import('ocs-bp-opioid-rural-urban', outpath = tempdir())
 
 }

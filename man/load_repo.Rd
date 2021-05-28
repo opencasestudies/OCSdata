@@ -52,6 +52,6 @@ repository, including all of the code, data, and document files, are downloaded
 with a single function.
 }
 \examples{
-load_repo('ocs-bp-co2-emissions')
+load_repo('ocs-bp-co2-emissions', outpath = tempdir())
 
 }

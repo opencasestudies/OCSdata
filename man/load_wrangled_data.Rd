@@ -49,6 +49,6 @@ the specified directory. This makes it so all the wrangled data
 are easily available in a local folder to be analyzed.
 }
 \examples{
-load_wrangled_data('ocs-bp-co2-emissions')
+load_wrangled_data('ocs-bp-co2-emissions', outpath = tempdir())
 
 }

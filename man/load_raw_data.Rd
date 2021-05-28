@@ -49,6 +49,6 @@ the specified directory. This makes it so all the raw data
 are easily available in a local folder to be processed and wrangled.
 }
 \examples{
-load_raw_data('ocs-bp-co2-emissions')
+load_raw_data('ocs-bp-co2-emissions', outpath = tempdir())
 
 }

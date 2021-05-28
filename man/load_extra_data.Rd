@@ -49,6 +49,6 @@ the specified directory. This makes it so all the extra data
 are easily available in a local folder for your use.
 }
 \examples{
-load_extra_data('ocs-bp-co2-emissions')
+load_extra_data('ocs-bp-co2-emissions', outpath = tempdir())
 
 }

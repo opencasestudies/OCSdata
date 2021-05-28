@@ -42,7 +42,7 @@
 #' @importFrom purrr map
 #' @export
 #'
-#' @examples load_wrangled_data('ocs-bp-co2-emissions')
+#' @examples load_wrangled_data('ocs-bp-co2-emissions', outpath = tempdir())
 #'
 load_wrangled_data <- function(casestudy, outpath = NULL){
   if (is.null(outpath)) {
@@ -52,7 +52,7 @@ load_wrangled_data <- function(casestudy, outpath = NULL){
   dir.create(datapath, showWarnings = FALSE) # creating data folder
 
   wrangledpath = file.path(datapath,'wrangled') # path to wrangled data subfolder
-  dir.create(wrangledpath) # creating wrangled folder
+  dir.create(wrangledpath, showWarnings = FALSE) # creating wrangled folder
 
   # getting repo webpage data
   repo_url = paste0("https://api.github.com/repos/opencasestudies/",

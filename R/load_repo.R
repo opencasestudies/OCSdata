@@ -46,7 +46,8 @@
 #' @importFrom usethis use_zip
 #' @export
 #'
-#' @examples load_repo('ocs-bp-co2-emissions')
+#' @examples
+#' load_repo('ocs-bp-co2-emissions', outpath = tempdir())
 #'
 load_repo <- function(casestudy, outpath=NULL){
   if (is.null(outpath)) {

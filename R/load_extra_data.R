@@ -42,7 +42,7 @@
 #' @importFrom purrr map
 #' @export
 #'
-#' @examples load_extra_data('ocs-bp-co2-emissions')
+#' @examples load_extra_data('ocs-bp-co2-emissions', outpath = tempdir())
 #'
 load_extra_data <- function(casestudy, outpath = NULL){
   if (is.null(outpath)) {
@@ -52,7 +52,7 @@ load_extra_data <- function(casestudy, outpath = NULL){
   dir.create(datapath, showWarnings = FALSE) # creating data folder
 
   extrapath = file.path(datapath,'extra') # path to extra data subfolder
-  dir.create(extrapath)
+  dir.create(extrapath, showWarnings = FALSE)
 
   # getting repo webpage data
   repo_url = paste0("https://api.github.com/repos/opencasestudies/",

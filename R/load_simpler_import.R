@@ -42,7 +42,7 @@
 #' @importFrom purrr map
 #' @export
 #'
-#' @examples load_simpler_import('ocs-bp-opioid-rural-urban')
+#' @examples load_simpler_import('ocs-bp-opioid-rural-urban', outpath = tempdir())
 #'
 load_simpler_import <- function(casestudy, outpath = NULL){
   if (is.null(outpath)) {
@@ -52,7 +52,7 @@ load_simpler_import <- function(casestudy, outpath = NULL){
   dir.create(datapath, showWarnings = FALSE) # creating data folder
 
   simportpath = file.path(datapath,'simpler_import') # path to simpler_import data subfolder
-  dir.create(simportpath) # creating simpler_import folder
+  dir.create(simportpath, showWarnings = FALSE) # creating simpler_import folder
 
   # getting repo webpage data
   repo_url = paste0("https://api.github.com/repos/opencasestudies/",
