@@ -13,6 +13,8 @@ Description: Provides functions to access and download data from the 'Open Case 
  The package relies on the httr::GET() function to access files through the 'GitHub' API. 
  The functions usethis::use_zip() and usethis::create_from_github() are used to clone 
  and/or download the case study repositories.
+ Webservices
+ <https://github.com/opencasestudies>
 Imports: 
     usethis (>= 2.0.0),
     purrr (>= 0.3.0),
