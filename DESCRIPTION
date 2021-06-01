@@ -1,16 +1,16 @@
 Package: OCSdata
-Title: Download Data from the Open Case Study Repository
+Title: Download Data from the 'Open Case Study' Repository
 Version: 1.0.0
 Authors@R: 
     person(given = "Michael",
            family = "Breshock",
            role = c("aut", "cre"),
            email = "mbreshock@gmail.com")
-Description: Provides functions to access and download data from the OCS GitHub
- repositories. Different functions enable users to grab the data they need at different 
+Description: Provides functions to access and download data from the 'Open Case Studies'
+ repositories on 'GitHub'. Different functions enable users to grab the data they need at different 
  sections in the case study, as well as download the whole case study repository. 
  All the user needs to do is input the name of the case study being worked on. 
- The package relies on the httr::GET() function to access files through the GitHub API. 
+ The package relies on the httr::GET() function to access files through the 'GitHub' API. 
  The functions usethis::use_zip() and usethis::create_from_github() are used to clone 
  and/or download the case study repositories.
 Imports: 
