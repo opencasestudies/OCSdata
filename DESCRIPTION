@@ -27,7 +27,7 @@ Description: Provides functions to access and download data from the 'Open Case 
 Imports: 
     usethis (>= 2.0.0),
     purrr (>= 0.3.0),
-    httr (>= 1.4.0),
+    httr (>= 1.4.0)
 Depends: R (>= 3.5.0)
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
