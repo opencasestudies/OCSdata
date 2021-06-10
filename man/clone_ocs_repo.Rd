@@ -55,7 +55,7 @@ files, are cloned in git and downloaded with a single function.
 Need to have a personal access token (PAT) to work.
 }
 \examples{
-\donttest{
+\dontrun{
 clone_ocs_repo("ocs-bp-co2-emissions", outpath = tempdir(), fork_repo = TRUE)
 }
 }

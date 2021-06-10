@@ -4,7 +4,7 @@
 \alias{load_imported_data}
 \title{Download Open Case Study Imported Data}
 \usage{
-load_imported_data(casestudy)
+load_imported_data(casestudy, outpath = NULL)
 }
 \arguments{
 \item{casestudy}{character string, name of the case study to pull data from.
@@ -31,6 +31,9 @@ ocs-bp-school-shootings-dashboard
 ocs-bp-co2-emissions
 
 ocs-bp-diet}
+
+\item{outpath}{character string, path to the directory where the downloaded
+data folder should be saved to.}
 }
 \value{
 Nothing useful is returned, R objects will be loaded into the global environment.
