@@ -32,6 +32,9 @@
 #'
 #' ocs-bp-diet
 #'
+#' @param outpath character string, path to the directory where the downloaded
+#' data folder should be saved to.
+#'
 #' @return Nothing useful is returned, R objects will be loaded into the global environment.
 #'
 #' @import httr
@@ -40,7 +43,15 @@
 #'
 #' @examples load_imported_data('ocs-bp-co2-emissions')
 #'
-load_imported_data <- function(casestudy){
+load_imported_data <- function(casestudy, outpath = NULL){
+  if (is.null(outpath)) {
+    outpath = getwd() # path to working directory
+  }
+  datapath = file.path(outpath,'data') # path to new data folder directory
+  dir.create(datapath, showWarnings = FALSE) # creating data folder
+
+  importpath = file.path(datapath,'imported') # path to raw data subfolder
+  dir.create(importpath, showWarnings = FALSE)
 
   # getting repo webpage data
   repo_url = paste0("https://api.github.com/repos/opencasestudies/",
@@ -53,14 +64,19 @@ load_imported_data <- function(casestudy){
 
   for (fname in paths){
     if (grepl('data/', fname, fixed = TRUE)) { # if file is in the data directory
-      if (grepl('/imported/', fname, fixed = TRUE)) {
+      if (grepl('/imported/', fname, fixed = TRUE)) { # if in imported
+        if (grepl('.', fname, fixed = TRUE)) { # if a file
 
-        githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true') # github file link
+          githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true') # github file link
 
-        if (grepl('.rda', fname, fixed = TRUE)) { # if .rda file
+          # download the file
+          GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
 
-          # load the r object into the global environment from the .rda file link
-          load(url(githuburl), envir = globalenv())
+        } else { # if a directory
+          # create sub-folder
+          subpath = file.path(outpath, fname)
+          dir.create(subpath)
+
         }
       }
     }

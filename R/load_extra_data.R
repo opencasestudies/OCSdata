@@ -65,25 +65,17 @@ load_extra_data <- function(casestudy, outpath = NULL){
 
   for (fname in paths){
     if (grepl('data/', fname, fixed = TRUE)) { # if file is in the data directory
-      if (grepl('/extra/', fname, fixed = TRUE)) {
-        if (grepl('.', fname, fixed = TRUE)) {
+      if (grepl('/extra/', fname, fixed = TRUE)) { # if in extra
+        if (grepl('.', fname, fixed = TRUE)) { # if a file
 
           githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true') # github file link
 
-          if (grepl('.rda', fname, fixed = TRUE)) { # if .rda file
+          # download the file
+          GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
 
-            # load the r object into the global environment from the .rda file link
-            load(url(githuburl), envir = globalenv())
 
-          } else {
-
-            # download the file
-            GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
-
-          }
-
-        } else {
-          # create sub-folder if needed
+        } else { # if a directory
+          # create sub-folder
           subpath = file.path(outpath, fname)
           dir.create(subpath)
 

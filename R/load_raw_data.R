@@ -65,25 +65,16 @@ load_raw_data <- function(casestudy, outpath = NULL){
 
   for (fname in paths){
     if (grepl('data/', fname, fixed = TRUE)) { # if file is in the data directory
-      if (grepl('/raw/', fname, fixed = TRUE)) {
-        if (grepl('.', fname, fixed = TRUE)) {
+      if (grepl('/raw/', fname, fixed = TRUE)) { # if in raw
+        if (grepl('.', fname, fixed = TRUE)) { # if a file name
 
           githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true') # github file link
 
-          if (grepl('.rda', fname, fixed = TRUE)) { # if .rda file
+          # download the file
+          GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
 
-            # load the r object into the global environment from the .rda file link
-            load(url(githuburl), envir = globalenv())
-
-          } else {
-
-            # download the file
-            GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
-
-          }
-
-        } else {
-          # create sub-folder if needed
+        } else { # if a directory name
+          # create sub-folder
           subpath = file.path(outpath, fname)
           dir.create(subpath)
 
