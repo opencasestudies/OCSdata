@@ -48,7 +48,7 @@
 #' @export
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' clone_ocs_repo("ocs-bp-co2-emissions", outpath = tempdir(), fork_repo = TRUE)
 #' }
 clone_ocs_repo <- function(casestudy, outpath=NULL,fork_repo=NA){
