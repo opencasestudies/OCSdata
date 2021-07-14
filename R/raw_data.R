@@ -45,42 +45,75 @@
 #' @examples raw_data('ocs-bp-co2-emissions', outpath = tempdir())
 #'
 raw_data <- function(casestudy, outpath = NULL){
+
+  # check outpath input
   if (is.null(outpath)) {
-    outpath = getwd() # path to working directory
+    if (interactive()){
+      wd = getwd()
+      cat(paste("No destination directory specified. Would you like to save the",
+                "data files to your current working directory?\n"))
+      cat(paste("Current working directory:\n", wd, "\n"))
+      cat(paste("Responses:", "1. Yes, save to my current working directory.",
+                "2. Specify a different directory", "3. Cancel ", sep = "\n"))
+      response = readline(prompt = "Answer with a number 1-3: ")
+
+      if (response == '1'){
+        outpath = wd # path to working directory
+
+      } else if (response == '2'){
+        cat(paste("Enter the file path of the desired directory\n"))
+        outpath = readline(prompt = "File path: ")
+
+      } else {
+        return("Canceled.")
+      }
+
+    } else{ # if not interactive
+      msg = paste("Error: No destination directory specified. Please enter the file path for where the data files should be downloaded in the 'outpath' argument.")
+      return(msg)
+    }
   }
-  datapath = file.path(outpath,'data') # path to new data folder directory
-  dir.create(datapath, showWarnings = FALSE) # creating data folder
 
-  rawpath = file.path(datapath,'raw') # path to raw data subfolder
-  dir.create(rawpath, showWarnings = FALSE)
+  if (dir.exists(outpath)) {
+    outpath = file.path(outpath,'OCS_data') # creating new clean directory
+    dir.create(outpath, showWarnings = FALSE)
 
-  # getting repo webpage data
-  repo_url = paste0("https://api.github.com/repos/opencasestudies/",
-                    casestudy, "/git/trees/master?recursive=1") # creating repo url string
-  repo = GET(url=repo_url)
-  repocont = content(repo)
-  repounlist = unlist(repocont, recursive = FALSE)
-  paths = map(repounlist,'path') # creating list of just the file paths in the repo
-  paths = paths[!sapply(paths,is.null)] # removing null values
+    datapath = file.path(outpath,'data') # path to new data folder directory
+    dir.create(datapath, showWarnings = FALSE) # creating data folder
 
-  for (fname in paths){
-    if (grepl('data/', fname, fixed = TRUE)) { # if file is in the data directory
-      if (grepl('/raw/', fname, fixed = TRUE)) { # if in raw
-        if (grepl('.', fname, fixed = TRUE)) { # if a file name
+    rawpath = file.path(datapath,'raw') # path to raw data subfolder
+    dir.create(rawpath, showWarnings = FALSE)
 
-          githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true') # github file link
+    # getting repo webpage data
+    repo_url = paste0("https://api.github.com/repos/opencasestudies/",
+                      casestudy, "/git/trees/master?recursive=1") # creating repo url string
+    repo = GET(url=repo_url)
+    repocont = content(repo)
+    repounlist = unlist(repocont, recursive = FALSE)
+    paths = map(repounlist,'path') # creating list of just the file paths in the repo
+    paths = paths[!sapply(paths,is.null)] # removing null values
 
-          # download the file
-          GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
+    for (fname in paths){
+      if (grepl('data/', fname, fixed = TRUE)) { # if file is in the data directory
+        if (grepl('/raw/', fname, fixed = TRUE)) { # if in raw
+          if (grepl('.', fname, fixed = TRUE)) { # if a file name
 
-        } else { # if a directory name
-          # create sub-folder
-          subpath = file.path(outpath, fname)
-          dir.create(subpath)
+            githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true') # github file link
 
+            # download the file
+            GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
+
+          } else { # if a directory name
+            # create sub-folder
+            subpath = file.path(outpath, fname)
+            dir.create(subpath)
+
+          }
         }
       }
     }
+  } else {
+    return("The specified directory does not exist.")
   }
 }
 
