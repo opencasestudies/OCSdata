@@ -3,7 +3,7 @@
 #' Download the specified case study raw data to use as you follow along the case study.
 #'
 #' @details This function downloads the Open Case Study raw data
-#' from GitHub and saves it in a new 'data/raw/' folder in
+#' from GitHub and saves it in a new 'OCS_data/data/raw/' folder in
 #' the specified directory. This makes it so all the raw data
 #' are easily available in a local folder to be processed and wrangled.
 #'
@@ -35,8 +35,8 @@
 #' @param outpath character string, path to the directory where the downloaded
 #' data folder should be saved.
 #'
-#' @return Nothing useful is returned, a data/raw folder will be downloaded and
-#' appear in your directory.
+#' @return If download is successful, the path to the downloaded data folder is
+#' returned. Otherwise the appropriate error message is returned.
 #'
 #' @import httr
 #' @importFrom purrr map
@@ -112,6 +112,8 @@ raw_data <- function(casestudy, outpath = NULL){
         }
       }
     }
+    return(cat(paste("The downloaded files are in:", rawpath)))
+
   } else {
     return("The specified directory does not exist.")
   }
