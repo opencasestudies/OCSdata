@@ -1,12 +1,11 @@
-#' Download Open Case Study Wrangled Data Spreadsheets
+#' Download Open Case Study Wrangled Data
 #'
-#' Download the specified case study wrangled data in .csv format
-#' to use as you follow along the case study.
+#' Download the specified case study wrangled data to use as you follow along the case study.
 #'
 #' @details This function downloads the Open Case Study wrangled data
-#' from GitHub and saves it in a new 'OCS_data/data/wrangled/' folder in
+#' from GitHub and saves it in a new 'OCSdata/data/wrangled/' folder in
 #' the specified directory. This makes it so all the wrangled data
-#' are easily available in a local folder to be analyzed.
+#' are easily available in a local folder.
 #'
 #' @param casestudy character string, name of the case study to pull data from.
 #' The input name should follow the same naming scheme as the repository on GitHub:
@@ -39,13 +38,13 @@
 #' @return If download is successful, the path to the downloaded data folder is
 #' returned. Otherwise the appropriate error message is returned.
 #'
-#' @import httr
+#' @importFrom httr GET write_disk
 #' @importFrom purrr map
 #' @export
 #'
-#' @examples wrangled_csv('ocs-bp-co2-emissions', outpath = tempdir())
+#' @examples wrangled_data('ocs-bp-opioid-rural-urban', outpath = tempfile())
 #'
-wrangled_csv <- function(casestudy, outpath = NULL){
+wrangled_data <- function(casestudy, outpath = NULL){
 
   # check outpath input
   if (is.null(outpath)) {
@@ -83,12 +82,11 @@ wrangled_csv <- function(casestudy, outpath = NULL){
     dir.create(datapath, showWarnings = FALSE) # creating data folder
 
     wrangledpath = file.path(datapath,'wrangled') # path to wrangled data subfolder
-    dir.create(wrangledpath, showWarnings = FALSE) # creating wrangled folder
+    dir.create(wrangledpath, showWarnings = FALSE)
 
     # getting repo webpage data
     repo_url = paste0("https://api.github.com/repos/opencasestudies/",
                       casestudy, "/git/trees/master?recursive=1") # creating repo url string
-
     repo = GET(url=repo_url)
     repocont = content(repo)
     repounlist = unlist(repocont, recursive = FALSE)
@@ -98,18 +96,14 @@ wrangled_csv <- function(casestudy, outpath = NULL){
     for (fname in paths){
       if (grepl('data/', fname, fixed = TRUE)) { # if file is in the data directory
         if (grepl('/wrangled/', fname, fixed = TRUE)) { # if in wrangled
-          if (grepl('.', fname, fixed = TRUE)) { # if a file
-            if(!grepl('.rda', fname, fixed = TRUE)) {
+          if (grepl('.', fname, fixed = TRUE)) { # if a file name
 
-            githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true')
-            # github file link
+            githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true') # github file link
 
             # download the file
-            GET(githuburl, write_disk(file.path(outpath, fname)))
-            # loading file from url and writing to disk
-            }
+            GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
 
-          } else { # if a directory
+          } else { # if a directory name
             # create sub-folder
             subpath = file.path(outpath, fname)
             dir.create(subpath)

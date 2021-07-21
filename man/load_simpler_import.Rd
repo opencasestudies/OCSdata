@@ -2,53 +2,11 @@
 % Please edit documentation in R/load_simpler_import.R
 \name{load_simpler_import}
 \alias{load_simpler_import}
-\title{Download Open Case Study Simpler Import Data}
+\title{Internal Function}
 \usage{
 load_simpler_import(casestudy, outpath = NULL)
 }
-\arguments{
-\item{casestudy}{character string, name of the case study to pull data from.
-The input name should follow the same naming scheme as the repository on GitHub:
-
-ocs-bp-rural-and-urban-obesity
-
-ocs-bp-air-pollution
-
-ocs-bp-vaping-case-study
-
-ocs-bp-opioid-rural-urban
-
-ocs-bp-RTC-wrangling
-
-ocs-bp-RTC-analysis
-
-ocs-bp-youth-disconnection
-
-ocs-bp-youth-mental-health
-
-ocs-bp-school-shootings-dashboard
-
-ocs-bp-co2-emissions
-
-ocs-bp-diet}
-
-\item{outpath}{character string, path to the directory where the downloaded
-data folder should be saved to.}
-}
-\value{
-Nothing useful is returned, a data/simpler_import folder will be downloaded and
-appear in your directory.
-}
 \description{
-Download the specified case study simpler import data to use as you follow along the case study.
+This is not to be used directly by the users.
 }
-\details{
-This function downloads the Open Case Study raw data
-from GitHub and saves it in a new 'data/simpler_import/' folder in
-the specified directory. This makes it so all the simpler import data
-are easily available in a local folder to be processed and wrangled.
-}
-\examples{
-load_simpler_import('ocs-bp-opioid-rural-urban', outpath = tempdir())
-
-}
+\keyword{internal}

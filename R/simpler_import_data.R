@@ -38,11 +38,11 @@
 #' @return If download is successful, the path to the downloaded data folder is
 #' returned. Otherwise the appropriate error message is returned.
 #'
-#' @import httr
+#' @importFrom httr GET write_disk
 #' @importFrom purrr map
 #' @export
 #'
-#' @examples simpler_import_data('ocs-bp-opioid-rural-urban', outpath = tempdir())
+#' @examples simpler_import_data('ocs-bp-opioid-rural-urban', outpath = tempfile())
 #'
 simpler_import_data <- function(casestudy, outpath = NULL){
 

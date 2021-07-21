@@ -38,11 +38,11 @@
 #' @return If download is successful, the path to the downloaded data folder is
 #' returned. Otherwise the appropriate error message is returned.
 #'
-#' @import httr
+#' @importFrom httr GET write_disk
 #' @importFrom purrr map
 #' @export
 #'
-#' @examples raw_data('ocs-bp-co2-emissions', outpath = tempdir())
+#' @examples raw_data('ocs-bp-opioid-rural-urban', outpath = tempfile())
 #'
 raw_data <- function(casestudy, outpath = NULL){
 
