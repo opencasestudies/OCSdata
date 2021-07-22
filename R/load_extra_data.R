@@ -3,7 +3,7 @@
 #' This is not to be used directly by the users.
 #'
 #' @export
-#' @importFrom httr GET write_disk
+#' @importFrom httr GET write_disk content
 #' @importFrom purrr map
 #' @keywords internal
 #'

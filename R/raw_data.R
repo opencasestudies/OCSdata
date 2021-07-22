@@ -38,7 +38,7 @@
 #' @return If download is successful, the path to the downloaded data folder is
 #' returned. Otherwise the appropriate error message is returned.
 #'
-#' @importFrom httr GET write_disk
+#' @importFrom httr GET write_disk content
 #' @importFrom purrr map
 #' @export
 #'
