@@ -33,7 +33,7 @@ ocs-bp-co2-emissions
 ocs-bp-diet}
 
 \item{outpath}{character string, path to the directory where the downloaded
-repository should be saved to. If NULL, the repo will be saved to your working directory.}
+repository folder should be saved to.}
 
 \item{fork_repo}{logical, FALSE will clone the repo, while TRUE will fork the repo and then clone the fork.
 Default is NA, which will check if you are allowed to push to the repository or not. If you can, the repo
@@ -52,11 +52,12 @@ This function clones the specified OCS case study repository
 from GitHub and saves it as a new R project in a new folder in
 the specified directory. This makes
 it so the case study repository, including all of the code, data, and document
-files, are cloned in git and downloaded with a single function.
+files, are cloned with git and downloaded in a single function.
 Need to have a personal access token (PAT) to work.
+Wrapper for the create_from_github function from usethis.
 }
 \examples{
 \dontrun{
-clone_ocs("ocs-bp-co2-emissions", outpath = tempdir(), fork_repo = TRUE)
+clone_ocs("ocs-bp-co2-emissions", outpath = tempfile())
 }
 }

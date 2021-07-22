@@ -1,17 +1,15 @@
-#' Clone Case Study Repository
+#' Download Case Study Repository Zip File
 #'
-#' Clone the specified case study repository and save it as a new R project in a local directory.
-#' Need to have a personal access token (PAT) registered to work.
+#' Download the specified case study repository zip file and unzip it to a local directory.
 #'
-#' @details This function clones the specified OCS case study repository
-#' from GitHub and saves it as a new R project in a new folder in
-#' the specified directory. This makes
-#' it so the case study repository, including all of the code, data, and document
-#' files, are cloned with git and downloaded in a single function.
-#' Need to have a personal access token (PAT) to work.
-#' Wrapper for the create_from_github function from usethis.
+#' @details This function downloads the specified OCS case study repository
+#' from GitHub as a zip file. The function unzips the folder and saves it as
+#' a new R project in a local directory. This makes it so the case study
+#' repository, including all of the code, data, and document files, are downloaded
+#' with a single function. Wrapper for the use_zip function from usethis.
 #'
-#' @param casestudy character string, name of the case study to clone repository from.
+#'
+#' @param casestudy character string, name of the case study to download zip file from.
 #' The input name should follow the same naming scheme as the repository on GitHub:
 #'
 #' ocs-bp-rural-and-urban-obesity
@@ -37,23 +35,20 @@
 #' ocs-bp-diet
 #'
 #' @param outpath character string, path to the directory where the downloaded
-#' repository folder should be saved to.
-#'
-#' @param fork_repo logical, FALSE will clone the repo, while TRUE will fork the repo and then clone the fork.
-#' Default is NA, which will check if you are allowed to push to the repository or not. If you can, the repo
-#' will be cloned. If you cannot push, the repo will be forked and cloned.
+#' data folder should be saved.
 #'
 #' @return If download is successful, the path to the downloaded data folder is
 #' returned. Otherwise the appropriate error message is returned.
 #'
-#' @importFrom usethis create_from_github
+#' @importFrom usethis use_zip
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' clone_ocs("ocs-bp-co2-emissions", outpath = tempfile())
-#' }
-clone_ocs <- function(casestudy, outpath=NULL,fork_repo=NA){
+#' zip_ocs('ocs-bp-co2-emissions', outpath = tempfile())
+#'
+zip_ocs <- function(casestudy, outpath=NULL){
+
+  # check outpath input
   if (is.null(outpath)) {
     if (interactive()){
       wd = getwd()
@@ -82,8 +77,8 @@ clone_ocs <- function(casestudy, outpath=NULL,fork_repo=NA){
   }
 
   if (dir.exists(outpath)){
-    create_from_github(paste0('opencasestudies/',casestudy), destdir = outpath,
-                       fork = fork_repo, open = FALSE)
+    use_zip(paste0('opencasestudies/',casestudy), destdir = outpath,
+            cleanup = TRUE)
     return(cat(paste("The downloaded repository is in:", outpath)))
   } else {
     return("The specified directory does not exist.")
