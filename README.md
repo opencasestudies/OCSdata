@@ -15,30 +15,34 @@ devtools::install_github("opencasestudies/OCSdata")
 
 ## Examples
 
-These examples assume you'd like to download the data files into your current working directory. If you'd like to download them elsewhere, specify the desired directory in the `outpath` argument.
+These examples download the data files to temporary directories to avoid 
+overwriting local files. If you'd like to save the files elsewhere, 
+specify the file path to the desired download location in the `outpath` argument.
+Or, leave the argument blank to interactively specify a directory with the R console. 
 
 ```R
 library(OCSdata)
 
 # Starting at data import section:
-load_raw_data("ocs-bp-opioid-rural-urban", outpath = getwd())
-# for file formats that are easier to import:
-load_simpler_import("ocs-bp-opioid-rural-urban", outpath = getwd())
+raw_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
+
+# for raw data in file formats that are easier to import, run:
+simpler_import_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
 
 # Starting at data exploration/wrangling sections: 
-load_imported_data("ocs-bp-opioid-rural-urban", outpath = getwd())
+imported_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
 
 # Starting at data visualization/analysis sections:
-load_wrangled_data("ocs-bp-opioid-rural-urban", outpath = getwd())
+wrangled_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
 
 # Looking for more data on this topic: 
-load_extra_data("ocs-bp-opioid-rural-urban", outpath = getwd())
+extra_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
 
-# Download all repository files: 
-load_repo("ocs-bp-opioid-rural-urban", outpath = getwd())
+# Download repository in a zip file: 
+zip_ocs("ocs-bp-opioid-rural-urban", outpath = tempfile())
 
-# Clone the case study GitHub repository: 
-clone_ocs_repo("ocs-bp-opioid-rural-urban", outpath = getwd(), fork_repo = TRUE)
+# Clone the case study GitHub repository (requires registered PAT): 
+clone_ocs("ocs-bp-opioid-rural-urban", outpath = tempfile(), fork_repo = TRUE)
 
 # Setting fork_repo = TRUE will fork the repo first and then clone the fork, 
 # while FALSE will clone the repo directly from the Open Case Studies GitHub. 
@@ -46,7 +50,8 @@ clone_ocs_repo("ocs-bp-opioid-rural-urban", outpath = getwd(), fork_repo = TRUE)
 # permissions. This function requires your personal GitHub PAT to be registered in RStudio. 
 
 ```
-*Note: The default argument for* `outpath` *will download the files to your current working directory.* `outpath = getwd()` *is redundant, but used here to illustrate that the download location can be specified.*
+*Note: The default argument for* `outpath` *will trigger an interactive session* 
+*where the user confirms the download location.*
 
 These examples use the [Opioids in United States](https://github.com/opencasestudies/ocs-bp-opioid-rural-urban) case study, but you can use these functions with any of our case studies. Make sure to use the **Case Study ID** for the `casestudy` argument. See below to find your case study's ID:
 
