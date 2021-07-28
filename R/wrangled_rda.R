@@ -1,11 +1,11 @@
-#' Download Open Case Study Wrangled Data
+#' Download Open Case Study Wrangled Data - RDAs
 #'
 #' Download the specified case study wrangled data to use as you follow along the case study.
 #'
-#' @details This function downloads the Open Case Study wrangled data
-#' from GitHub and saves it in a new 'OCSdata/data/wrangled/' folder in
+#' @details This function downloads the Open Case Study wrangled data from GitHub
+#' and saves it in a new 'OCSdata/data/wrangled/' folder in
 #' the specified directory. This makes it so all the wrangled data
-#' are easily available in a local folder.
+#' are easily available in a local folder. The data will be in .rda format.
 #'
 #' @param casestudy character string, name of the case study to pull data from.
 #' The input name should follow the same naming scheme as the repository on GitHub:
@@ -42,9 +42,9 @@
 #' @importFrom purrr map
 #' @export
 #'
-#' @examples wrangled_data('ocs-bp-opioid-rural-urban', outpath = tempfile())
+#' @examples wrangled_rda('ocs-bp-opioid-rural-urban', outpath = tempfile())
 #'
-wrangled_data <- function(casestudy, outpath = NULL){
+wrangled_rda <- function(casestudy, outpath = NULL){
   repo_names = c("ocs-bp-rural-and-urban-obesity", "ocs-bp-air-pollution",
                  "ocs-bp-vaping-case-study", "ocs-bp-opioid-rural-urban",
                  "ocs-bp-RTC-wrangling", "ocs-bp-RTC-analysis",
@@ -103,12 +103,12 @@ wrangled_data <- function(casestudy, outpath = NULL){
         if (grepl('data/', fname, fixed = TRUE)) { # if file is in the data directory
           if (grepl('/wrangled/', fname, fixed = TRUE)) { # if in wrangled
             if (grepl('.', fname, fixed = TRUE)) { # if a file name
-
-              githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true') # github file link
-
-              # download the file
-              GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
-
+              if (grepl('.rda',fname, fixed = TRUE)) { # if .rda
+                # github file url
+                githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true')
+                # download the file
+                GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
+              }
             } else { # if a directory name
               # create sub-folder
               subpath = file.path(outpath, fname)

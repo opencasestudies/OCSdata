@@ -1,5 +1,5 @@
 Package: OCSdata
-Title: Download Data from the 'Open Case Study' Repository
+Title: Download Data from the 'Open Case Studies' Repository
 Version: 1.0.1
 Authors@R: 
     person(given = "Michael",

@@ -47,13 +47,17 @@ The following examples illustrate all of the different functions and how you can
 library(OCSdata)
 ```
 
-### Starting at data import section:
+### Starting at data import:
 The `raw_data` function will download the raw data files that will be imported into R.
 
 ```R
 raw_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
 ```
 *image/gif showing downloaded data folder structure*
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/OCS_data_folder.png "ocs_data folder")
+
+![](https://raw.githubusercontent.com/mbreshock/images/master/Rotating_earth.gif "rotating earth")
+
 
 ### For file formats that are easier to import:
 The `simpler_import_data` function will download raw data files that have been converted to file formats that are easier to import into R, typically .csv. Some case studies offer this option when the original raw files require a more complicated import step. 
