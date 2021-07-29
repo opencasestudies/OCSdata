@@ -48,15 +48,17 @@ library(OCSdata)
 ```
 
 ### Starting at data import:
-The `raw_data` function will download the raw data files that will be imported into R.
+The `raw_data` function will download the raw data files that can be imported into R.
 
 ```R
 raw_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
 ```
-*image/gif showing downloaded data folder structure*
-![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/OCS_data_folder.png "ocs_data folder")
 
-![](https://raw.githubusercontent.com/mbreshock/images/master/Rotating_earth.gif "rotating earth")
+The function will create an OCS_data/data/raw directory where the raw data files can be found: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/raw_data_directory.gif "raw data directory")
+
+If the input to `outpath` is the path to a folder called "demo," the directory structure will look like this: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/raw_data_directory_structure.png "raw directory structure")
 
 
 ### For file formats that are easier to import:
@@ -66,52 +68,96 @@ The `simpler_import_data` function will download raw data files that have been c
 simpler_import_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
 ```
 
+The function will create an OCS_data/data/simpler_import directory where the data files can be found: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/simpler_data_directory.gif "simpler_import data directory")
+
+If the input to `outpath` is the path to a folder called "demo," the directory structure will look like this: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/simpler_data_directory_structure.png "simpler_import directory structure")
+
 ### For more data on this topic: 
 The `extra_data` function will download raw data files that are not used in the case study, but are available for users to further analyze. 
 
 ```R
 extra_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
 ```
-The data files downloaded by the last three methods can be imported into R using conventional data import methods.
+
+The function will create an OCS_data/data/extra directory where the data files can be found: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/extra_data_directory.gif "extra data directory")
+
+If the input to `outpath` is the path to a folder called "demo," the directory structure will look like this: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/extra_data_directory_structure.png "extra directory structure")
+
+$\color{blue}{\text{The raw, simpler import, and extra data files can be imported into R using conventional data import methods.}}$
 
 ### Starting at data exploration/wrangling sections: 
-The `imported_data` function will download raw data files in the .rda format, meaning they've already been imported as R objects. 
+The `imported_data` function will download raw data files in .rda format. This means the data have already been imported into R objects. 
 
 ```R
 imported_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
 ```
-These files can be imported into R by either double clicking on the files in Rstudio or using the `load()` function. 
-*show image/gif of clicking .rda files and give example of load() function*
+The function will create an OCS_data/data/imported directory where the imported data files can be found: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/imported_data_directory.gif "imported data directory")
+
+If the input to `outpath` is the path to a folder called "demo," the directory structure will look like this: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/imported_data_directory_structure.png "imported directory structure")
+
+### Loading RDA Files
+RDA files can be imported into R by either double clicking on the files in Rstudio or using the `load()` function. The following examples show how to use both methods with the "land_area.rda" file from the imported data folder we just downloaded.
+
+**Double Click Method:**
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/load_rda.gif "load RDA example")
+
+**Load Function Method:**
+```R
+file_path = "~/Desktop/demo/OCS_data/data/imported/land_area.rda"
+load(file_path)
+```
+In this case the OCS_data folder is saved to a demo folder in the Desktop directory. To use this method, replace the value assigned to `file_path` with the file path to your RDA file. 
+
+Both of these methods will load the RDA file into your global environment as an R object that is ready to be used. 
 
 ### Starting at data visualization/analysis sections:
-The `wrangled_data` function will download the data files that have already been wrangled and are ready to be processed. These come in both .csv and .rda formats. 
+The following functions will download the data files that have already been wrangled and are ready to be analyzed. These come in both .csv and .rda formats.
 
+**CSV**:
 ```R
-wrangled_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
+wrangled_csv("ocs-bp-opioid-rural-urban", outpath = tempfile())
 ```
-These files can be imported with conventional import methods or the .rda methods shown above. 
+The function will create an OCS_data/data/wrangled directory where the wrangled csv files can be found: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/wrangled_csv_directory.gif "wrangled csv directory")
 
+These files can be imported into R using conventional data import methods.
 
-### Download repository zip file: 
-The `zip_ocs` function will download the all of the repository files as a .zip file and unzip them into the specified directory. 
+**RDA**:
+```R
+wrangled_rda("ocs-bp-opioid-rural-urban", outpath = tempfile())
+```
+The function will create an OCS_data/data/wrangled directory where the wrangled rda files can be found: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/wrangled_rda_directory.gif "wrangled rda directory")
+
+These files can be loaded into R using the methods described above in the "Loading RDA Files" section.
+
+If the input to `outpath` is the path to a folder called "demo," the directory structure will look like this: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/wrangled_data_directory_structure.png "wrangled directory structure")
+
+### Download case study repository zip file: 
+The `zip_ocs` function will download the all of the repository files in a .zip folder and unzip them into a specified directory. 
 
 ```R
 zip_ocs("ocs-bp-opioid-rural-urban", outpath = tempfile())
 ```
 
 ### Clone the case study GitHub repository: 
-The `clone_ocs` function will clone the specified case study's GitHub repository with git and download the whole repository to the specified directory. 
+The `clone_ocs` function will clone the specified case study's GitHub repository with git and download the whole repository to a specified directory. This function requires your GitHub personal access token (PAT) to be registered in R/RStudio.
 
 ```R
 clone_ocs("ocs-bp-opioid-rural-urban", outpath = tempfile(), fork_repo = TRUE)
 ```
-
 Setting fork_repo = TRUE will fork the repo first and then clone the fork, 
 while FALSE will clone the repo directly from the Open Case Studies GitHub. 
-The default is fork_repo = NA, which will fork or clone based on your repository 
-permissions. This function requires your personal GitHub PAT to be registered in RStudio. 
+The default is fork_repo = NA, which will fork or clone based on your repository permissions.  
 
 
-*Note: To download the data into your current working directory, change the `outpath` argument to `getwd()`.*
+$\color{red}{\text{Note: To download the data into your current working directory, change the `outpath` argument to `getwd()`.}}$ 
 
-Just change "ocs-bp-opioid-rural-urban" to the ID of the case study you are working on! (See above for list of IDs)
+$\color{blue}{\text{Just change "ocs-bp-opioid-rural-urban" to the ID of the case study you are working on! (See above for list of IDs)}}$ 
