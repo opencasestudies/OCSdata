@@ -9,7 +9,7 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-This document outlines how the functions in the OCSdata package should be used to access data from [Open Case Studies](https://www.opencasestudies.org/). The 'arguments' section explains all of the inputs necessary for the functions to run and examples of appropriate inputs are given. The 'how to use' section explains the purpose of the functions and gives an example for each. The functions are also connected to the corresponding case study section when applicable. 
+This document outlines how the functions in the OCSdata package should be used to access data from [Open Case Studies](https://www.opencasestudies.org/). The [arguments](#Arguments) section explains all of the inputs necessary for the functions to run and examples of appropriate inputs are given. The 'how to use' section explains the purpose of the functions and gives an example for each. The functions are also connected to the corresponding case study section when applicable. 
 
 ## Arguments
 
@@ -87,8 +87,6 @@ The function will create an OCS_data/data/extra directory where the data files c
 If the input to `outpath` is the path to a folder called "demo," the directory structure will look like this: 
 ![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/extra_data_directory_structure.png "extra directory structure")
 
-$\color{blue}{\text{The raw, simpler import, and extra data files can be imported into R using conventional data import methods.}}$
-
 ### Starting at data exploration/wrangling sections: 
 The `imported_data` function will download raw data files in .rda format. This means the data have already been imported into R objects. 
 
@@ -125,8 +123,6 @@ wrangled_csv("ocs-bp-opioid-rural-urban", outpath = tempfile())
 ```
 The function will create an OCS_data/data/wrangled directory where the wrangled csv files can be found: 
 ![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/wrangled_csv_directory.gif "wrangled csv directory")
-
-These files can be imported into R using conventional data import methods.
 
 **RDA**:
 ```R
