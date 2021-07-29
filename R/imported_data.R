@@ -1,11 +1,11 @@
-#' Download Open Case Study Wrangled Data - CSVs
+#' Download Open Case Study Imported Data
 #'
-#' Download the specified case study wrangled data to use as you follow along the case study.
+#' Download the specified case study imported data to use as you follow along the case study.
 #'
-#' @details This function downloads the Open Case Study wrangled data from GitHub
-#' and saves it in a new 'OCSdata/data/wrangled/' folder in
-#' the specified directory. This makes it so all the wrangled data
-#' are easily available in a local folder. The data will be in .csv format.
+#' @details This function downloads the Open Case Study imported data
+#' from GitHub and saves it in a new 'OCSdata/data/imported/' folder in
+#' the specified directory. This makes it so all the imported data
+#' are easily available in a local folder.
 #'
 #' @param casestudy character string, name of the case study to pull data from.
 #' The input name should follow the same naming scheme as the repository on GitHub:
@@ -42,9 +42,9 @@
 #' @importFrom purrr map
 #' @export
 #'
-#' @examples wrangled_csv('ocs-bp-opioid-rural-urban', outpath = tempfile())
+#' @examples imported_data('ocs-bp-opioid-rural-urban', outpath = tempfile())
 #'
-wrangled_csv <- function(casestudy, outpath = NULL){
+imported_data <- function(casestudy, outpath = NULL){
   repo_names = c("ocs-bp-rural-and-urban-obesity", "ocs-bp-air-pollution",
                  "ocs-bp-vaping-case-study", "ocs-bp-opioid-rural-urban",
                  "ocs-bp-RTC-wrangling", "ocs-bp-RTC-analysis",
@@ -87,8 +87,8 @@ wrangled_csv <- function(casestudy, outpath = NULL){
       datapath = file.path(outpath,'data') # path to new data folder directory
       dir.create(datapath, showWarnings = FALSE) # creating data folder
 
-      wrangledpath = file.path(datapath,'wrangled') # path to wrangled data subfolder
-      dir.create(wrangledpath, showWarnings = FALSE)
+      importpath = file.path(datapath,'imported') # path to imported data subfolder
+      dir.create(importpath, showWarnings = FALSE)
 
       # getting repo webpage data
       repo_url = paste0("https://api.github.com/repos/opencasestudies/",
@@ -101,14 +101,14 @@ wrangled_csv <- function(casestudy, outpath = NULL){
 
       for (fname in paths){
         if (grepl('data/', fname, fixed = TRUE)) { # if file is in the data directory
-          if (grepl('/wrangled/', fname, fixed = TRUE)) { # if in wrangled
+          if (grepl('/imported/', fname, fixed = TRUE)) { # if in imported
             if (grepl('.', fname, fixed = TRUE)) { # if a file name
-              if (grepl('.csv',fname, fixed = TRUE)) { # if .csv
-                # github file url
-                githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true')
-                # download the file
-                GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
-              }
+
+              githuburl = paste0('https://github.com/opencasestudies/', casestudy, '/blob/master/',fname,'?raw=true') # github file link
+
+              # download the file
+              GET(githuburl, write_disk(file.path(outpath, fname))) # loading file from url and writing to disk
+
             } else { # if a directory name
               # create sub-folder
               subpath = file.path(outpath, fname)
@@ -118,13 +118,13 @@ wrangled_csv <- function(casestudy, outpath = NULL){
           }
         }
       }
-      return(cat(paste("The downloaded files are in:", wrangledpath)))
+      return(cat(paste("The downloaded files are in:", importpath)))
 
     } else {
       return("The specified directory does not exist.")
     }
   } else {
     return(cat(paste("Not a valid case study name. Please use the name of the case study \nGitHub repository.",
-                     "Use ?wrangled_data to view a list of valid names.")))
+                     "Use ?imported_data to view a list of valid names.")))
   }
 }

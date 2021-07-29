@@ -1,15 +1,17 @@
 ---
-title: "Instructions"
+title: "OCSdata Instructions"
 output: rmarkdown::html_vignette
 description: >
-  How to use OCSdata and why
+  How to use OCSdata
 vignette: >
   %\VignetteIndexEntry{Instructions}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
 
-## Inputs
+This document outlines how the functions in the OCSdata package should be used to access data from [Open Case Studies](https://www.opencasestudies.org/). The 'arguments' section explains all of the inputs necessary for the functions to run and examples of appropriate inputs are given. The 'how to use' section explains the purpose of the functions and gives an example for each. The functions are also connected to the corresponding case study section when applicable. 
+
+## Arguments
 
 ### casestudy
 
@@ -31,45 +33,131 @@ All of the OCSdata functions require a case study ID to be input to the `casestu
 
 ### outpath
 
-All of the functions also have the option of specifying the path to the folder where the data should be downloaded to. This argument defaults to `NULL` which will download the files to your current working directory. `load_imported_data()` is the only function that does not have an `outpath` argument as this function only loads R objects into your global environment. 
+All of the functions also have an `outpath` argument to specify where the files should be downloaded to. This argument defaults to `NULL` which will ask you to specify and confirm a download location interactively, suggesting your current working directory as an option. If the session is not interactive, an error message is returned that `outpath` must be specified.
 
 ### fork_repo
 
-This is a logical argument and only used for `clone_ocs_repo()`. `FALSE` will clone the repo, while `TRUE` will fork the repo and then clone. Defaults to `NA` which will fork or clone based on your repository permissions. 
+This is a logical argument and only used for `clone_ocs()`. `FALSE` will clone the repo, while `TRUE` will fork the repo and then clone the fork. Defaults to `NA` which will fork or clone based on your repository permissions. 
 
 ## How to Use
 
-The following examples illustrate all of the different functions and how you can use them to stop and start at different sections of the case study. These examples will download the data into temporary directories to avoid clutter and save space. To download them somewhere more permanent, specify the path to the desired directory (folder) in the `outpath` argument. 
+The following examples illustrate all of the different functions and how you can use them to stop and start at different sections of the case study. These examples will download the data into temporary directories to avoid overwriting local files. To download them somewhere else, specify the path to the desired directory (folder) in the `outpath` argument. 
 
 ```R
 library(OCSdata)
-
-# Starting at data import section:
-load_raw_data("ocs-bp-opioid-rural-urban", outpath = tempdir())
-# for file formats that are easier to import:
-load_simpler_import("ocs-bp-opioid-rural-urban", outpath = tempdir())
-
-# Starting at data exploration/wrangling sections: 
-load_imported_data("ocs-bp-opioid-rural-urban", outpath = tempdir())
-
-# Starting at data visualization/analysis sections:
-load_wrangled_data("ocs-bp-opioid-rural-urban", outpath = tempdir())
-
-# Looking for more data on this topic: 
-load_extra_data("ocs-bp-opioid-rural-urban", outpath = tempdir())
-
-# Download all repository files: 
-load_repo("ocs-bp-opioid-rural-urban", outpath = tempdir())
-
-# Clone the case study GitHub repository: 
-clone_ocs_repo("ocs-bp-opioid-rural-urban", outpath = tempdir(), fork_repo = TRUE)
-
-# Setting fork_repo = TRUE will fork the repo first and then clone the fork, 
-# while FALSE will clone the repo directly from the Open Case Studies GitHub. 
-# The default is fork_repo = NA, which will fork or clone based on your repository 
-# permissions. This function requires your personal GitHub PAT to be registered in RStudio. 
-
 ```
-*Note: To download the data into your current working directory, change the `outpath` argument to `getwd()`.*
 
-Just change "ocs-bp-opioid-rural-urban" to the ID of the case study you are working on!
+### Starting at data import:
+The `raw_data` function will download the raw data files that can be imported into R.
+
+```R
+raw_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
+```
+
+The function will create an OCS_data/data/raw directory where the raw data files can be found: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/raw_data_directory.gif "raw data directory")
+
+If the input to `outpath` is the path to a folder called "demo," the directory structure will look like this: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/raw_data_directory_structure.png "raw directory structure")
+
+
+### For file formats that are easier to import:
+The `simpler_import_data` function will download raw data files that have been converted to file formats that are easier to import into R, typically .csv. Some case studies offer this option when the original raw files require a more complicated import step. 
+
+```R
+simpler_import_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
+```
+
+The function will create an OCS_data/data/simpler_import directory where the data files can be found: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/simpler_data_directory.gif "simpler_import data directory")
+
+If the input to `outpath` is the path to a folder called "demo," the directory structure will look like this: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/simpler_data_directory_structure.png "simpler_import directory structure")
+
+### For more data on this topic: 
+The `extra_data` function will download raw data files that are not used in the case study, but are available for users to further analyze. 
+
+```R
+extra_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
+```
+
+The function will create an OCS_data/data/extra directory where the data files can be found: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/extra_data_directory.gif "extra data directory")
+
+If the input to `outpath` is the path to a folder called "demo," the directory structure will look like this: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/extra_data_directory_structure.png "extra directory structure")
+
+$\color{blue}{\text{The raw, simpler import, and extra data files can be imported into R using conventional data import methods.}}$
+
+### Starting at data exploration/wrangling sections: 
+The `imported_data` function will download raw data files in .rda format. This means the data have already been imported into R objects. 
+
+```R
+imported_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
+```
+The function will create an OCS_data/data/imported directory where the imported data files can be found: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/imported_data_directory.gif "imported data directory")
+
+If the input to `outpath` is the path to a folder called "demo," the directory structure will look like this: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/imported_data_directory_structure.png "imported directory structure")
+
+### Loading RDA Files
+RDA files can be imported into R by either double clicking on the files in Rstudio or using the `load()` function. The following examples show how to use both methods with the "land_area.rda" file from the imported data folder we just downloaded.
+
+**Double Click Method:**
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/load_rda.gif "load RDA example")
+
+**Load Function Method:**
+```R
+file_path = "~/Desktop/demo/OCS_data/data/imported/land_area.rda"
+load(file_path)
+```
+In this case the OCS_data folder is saved to a demo folder in the Desktop directory. To use this method, replace the value assigned to `file_path` with the file path to your RDA file. 
+
+Both of these methods will load the RDA file into your global environment as an R object that is ready to be used. 
+
+### Starting at data visualization/analysis sections:
+The following functions will download the data files that have already been wrangled and are ready to be analyzed. These come in both .csv and .rda formats.
+
+**CSV**:
+```R
+wrangled_csv("ocs-bp-opioid-rural-urban", outpath = tempfile())
+```
+The function will create an OCS_data/data/wrangled directory where the wrangled csv files can be found: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/wrangled_csv_directory.gif "wrangled csv directory")
+
+These files can be imported into R using conventional data import methods.
+
+**RDA**:
+```R
+wrangled_rda("ocs-bp-opioid-rural-urban", outpath = tempfile())
+```
+The function will create an OCS_data/data/wrangled directory where the wrangled rda files can be found: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/wrangled_rda_directory.gif "wrangled rda directory")
+
+These files can be loaded into R using the methods described above in the "Loading RDA Files" section.
+
+If the input to `outpath` is the path to a folder called "demo," the directory structure will look like this: 
+![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/wrangled_data_directory_structure.png "wrangled directory structure")
+
+### Download case study repository zip file: 
+The `zip_ocs` function will download the all of the repository files in a .zip folder and unzip them into a specified directory. 
+
+```R
+zip_ocs("ocs-bp-opioid-rural-urban", outpath = tempfile())
+```
+
+### Clone the case study GitHub repository: 
+The `clone_ocs` function will clone the specified case study's GitHub repository with git and download the whole repository to a specified directory. This function requires your GitHub personal access token (PAT) to be registered in R/RStudio.
+
+```R
+clone_ocs("ocs-bp-opioid-rural-urban", outpath = tempfile(), fork_repo = TRUE)
+```
+Setting fork_repo = TRUE will fork the repo first and then clone the fork, 
+while FALSE will clone the repo directly from the Open Case Studies GitHub. 
+The default is fork_repo = NA, which will fork or clone based on your repository permissions.  
+
+
+$\color{red}{\text{Note: To download the data into your current working directory, change the `outpath` argument to `getwd()`.}}$ 
+
+$\color{blue}{\text{Just change "ocs-bp-opioid-rural-urban" to the ID of the case study you are working on! (See above for list of IDs)}}$ 

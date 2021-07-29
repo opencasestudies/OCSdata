@@ -2,53 +2,11 @@
 % Please edit documentation in R/load_extra_data.R
 \name{load_extra_data}
 \alias{load_extra_data}
-\title{Download Open Case Study Extra Data}
+\title{Internal Function}
 \usage{
 load_extra_data(casestudy, outpath = NULL)
 }
-\arguments{
-\item{casestudy}{character string, name of the case study to pull data from.
-The input name should follow the same naming scheme as the repository on GitHub:
-
-ocs-bp-rural-and-urban-obesity
-
-ocs-bp-air-pollution
-
-ocs-bp-vaping-case-study
-
-ocs-bp-opioid-rural-urban
-
-ocs-bp-RTC-wrangling
-
-ocs-bp-RTC-analysis
-
-ocs-bp-youth-disconnection
-
-ocs-bp-youth-mental-health
-
-ocs-bp-school-shootings-dashboard
-
-ocs-bp-co2-emissions
-
-ocs-bp-diet}
-
-\item{outpath}{character string, path to the directory where the downloaded
-data folder should be saved to.}
-}
-\value{
-Nothing useful is returned, a data/extra folder will be downloaded and
-appear in your directory.
-}
 \description{
-Download the specified case study extra data to use as you wish.
+This is not to be used directly by the users.
 }
-\details{
-This function downloads the Open Case Study extra data
-from GitHub and saves it in a new 'data/extra/' folder in
-the specified directory. This makes it so all the extra data
-are easily available in a local folder for your use.
-}
-\examples{
-load_extra_data('ocs-bp-co2-emissions', outpath = tempdir())
-
-}
+\keyword{internal}
