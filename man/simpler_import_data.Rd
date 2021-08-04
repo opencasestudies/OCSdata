@@ -10,27 +10,11 @@ simpler_import_data(casestudy, outpath = NULL)
 \item{casestudy}{character string, name of the case study to pull data from.
 The input name should follow the same naming scheme as the repository on GitHub:
 
-ocs-bp-rural-and-urban-obesity
-
-ocs-bp-air-pollution
-
 ocs-bp-vaping-case-study
 
 ocs-bp-opioid-rural-urban
 
-ocs-bp-RTC-wrangling
-
-ocs-bp-RTC-analysis
-
-ocs-bp-youth-disconnection
-
-ocs-bp-youth-mental-health
-
-ocs-bp-school-shootings-dashboard
-
-ocs-bp-co2-emissions
-
-ocs-bp-diet}
+ocs-bp-youth-disconnection}
 
 \item{outpath}{character string, path to the directory where the downloaded
 data folder should be saved to.}
