@@ -10,27 +10,11 @@
 #' @param casestudy character string, name of the case study to pull data from.
 #' The input name should follow the same naming scheme as the repository on GitHub:
 #'
-#' ocs-bp-rural-and-urban-obesity
-#'
-#' ocs-bp-air-pollution
-#'
 #' ocs-bp-vaping-case-study
 #'
 #' ocs-bp-opioid-rural-urban
 #'
-#' ocs-bp-RTC-wrangling
-#'
-#' ocs-bp-RTC-analysis
-#'
 #' ocs-bp-youth-disconnection
-#'
-#' ocs-bp-youth-mental-health
-#'
-#' ocs-bp-school-shootings-dashboard
-#'
-#' ocs-bp-co2-emissions
-#'
-#' ocs-bp-diet
 #'
 #' @param outpath character string, path to the directory where the downloaded
 #' data folder should be saved to.
@@ -45,12 +29,8 @@
 #' @examples simpler_import_data('ocs-bp-opioid-rural-urban', outpath = tempfile())
 #'
 simpler_import_data <- function(casestudy, outpath = NULL){
-  repo_names = c("ocs-bp-rural-and-urban-obesity", "ocs-bp-air-pollution",
-                 "ocs-bp-vaping-case-study", "ocs-bp-opioid-rural-urban",
-                 "ocs-bp-RTC-wrangling", "ocs-bp-RTC-analysis",
-                 "ocs-bp-youth-disconnection", "ocs-bp-youth-mental-health",
-                 "ocs-bp-school-shootings-dashboard", "ocs-bp-co2-emissions",
-                 "ocs-bp-diet")
+  repo_names = c("ocs-bp-vaping-case-study", "ocs-bp-opioid-rural-urban",
+                 "ocs-bp-youth-disconnection")
   if (casestudy %in% repo_names){
     # check outpath input
     if (is.null(outpath)) {
@@ -124,7 +104,9 @@ simpler_import_data <- function(casestudy, outpath = NULL){
       return("The specified directory does not exist.")
     }
   } else {
-    return(cat(paste("Not a valid case study name. Please use the name of the case study \nGitHub repository.",
-                     "Use ?simpler_import_data to view a list of valid names.")))
+    return(cat(paste("The input to casestudy is either not a valid case study name\n",
+                     "or this case study does not offer simpler_import data.\n",
+                     "Remember to use the name of the case study GitHub repository.\n",
+                     "Use ?simpler_import_data to view a list of valid names.\n")))
   }
 }

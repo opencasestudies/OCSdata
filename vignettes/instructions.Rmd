@@ -146,10 +146,10 @@ In this case the OCS_data folder is saved to a demo folder in the Desktop direct
 
 Both of these methods will load the RDA file into your global environment as an R object that is ready to be used. 
 
-### Starting at data visualization/analysis sections:
+### <a name="wrangcsv"></a>Starting at data visualization/analysis sections:
 The following functions will download the data files that have already been wrangled and are ready to be analyzed. These come in both .csv and .rda formats.
 
-<a name="wrangcsv"></a>**CSV**:
+**CSV**:
 ```R
 wrangled_csv("ocs-bp-opioid-rural-urban", outpath = tempfile())
 ```
