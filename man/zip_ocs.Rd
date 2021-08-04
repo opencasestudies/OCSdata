@@ -50,6 +50,8 @@ repository, including all of the code, data, and document files, are downloaded
 with a single function. Wrapper for the use_zip function from usethis.
 }
 \examples{
-zip_ocs('ocs-bp-co2-emissions', outpath = tempfile())
+tmp = tempfile()
+dir.create(tmp)
+zip_ocs('ocs-bp-co2-emissions', outpath = tmp)
 
 }

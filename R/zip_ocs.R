@@ -44,7 +44,9 @@
 #' @export
 #'
 #' @examples
-#' zip_ocs('ocs-bp-co2-emissions', outpath = tempfile())
+#' tmp = tempfile()
+#' dir.create(tmp)
+#' zip_ocs('ocs-bp-co2-emissions', outpath = tmp)
 #'
 zip_ocs <- function(casestudy, outpath=NULL){
   repo_names = c("ocs-bp-rural-and-urban-obesity", "ocs-bp-air-pollution",

@@ -33,6 +33,8 @@ the specified directory. This makes it so all the extra data
 are easily available in a local folder for your use.
 }
 \examples{
-extra_data('ocs-bp-opioid-rural-urban', outpath = tempfile())
+tmp = tempfile()
+dir.create(tmp)
+extra_data('ocs-bp-opioid-rural-urban', outpath = tmp)
 
 }

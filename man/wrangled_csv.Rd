@@ -49,6 +49,8 @@ the specified directory. This makes it so all the wrangled data
 are easily available in a local folder. The data will be in .csv format.
 }
 \examples{
-wrangled_csv('ocs-bp-opioid-rural-urban', outpath = tempfile())
+tmp = tempfile()
+dir.create(tmp)
+wrangled_csv('ocs-bp-opioid-rural-urban', outpath = tmp)
 
 }

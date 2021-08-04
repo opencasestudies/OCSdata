@@ -51,7 +51,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' clone_ocs("ocs-bp-co2-emissions", outpath = tempfile())
+#' tmp = tempfile()
+#' dir.create(tmp)
+#' clone_ocs("ocs-bp-co2-emissions", outpath = tmp)
 #' }
 clone_ocs <- function(casestudy, outpath=NULL,fork_repo=NA){
   repo_names = c("ocs-bp-rural-and-urban-obesity", "ocs-bp-air-pollution",

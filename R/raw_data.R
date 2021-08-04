@@ -42,7 +42,10 @@
 #' @importFrom purrr map
 #' @export
 #'
-#' @examples raw_data('ocs-bp-opioid-rural-urban', outpath = tempfile())
+#' @examples
+#' tmp = tempfile()
+#' dir.create(tmp)
+#' raw_data('ocs-bp-opioid-rural-urban', outpath = tmp)
 #'
 raw_data <- function(casestudy, outpath = NULL){
   repo_names = c("ocs-bp-rural-and-urban-obesity", "ocs-bp-air-pollution",

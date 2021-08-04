@@ -24,29 +24,29 @@ Or, leave the argument blank to interactively specify a directory with the R con
 library(OCSdata)
 
 # Starting at data import section:
-raw_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
+raw_data("ocs-bp-opioid-rural-urban", outpath = tempdir())
 
 # for raw data in file formats that are easier to import, run:
-simpler_import_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
+simpler_import_data("ocs-bp-opioid-rural-urban", outpath = tempdir())
 
 # Starting at data exploration/wrangling sections: 
-imported_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
+imported_data("ocs-bp-opioid-rural-urban", outpath = tempdir())
 
 # Starting at data visualization/analysis sections:
 # for files in CSV format: 
-wrangled_csv("ocs-bp-opioid-rural-urban", outpath = tempfile())
+wrangled_csv("ocs-bp-opioid-rural-urban", outpath = tempdir())
 
 # for files in RDA format: 
-wrangled_rda("ocs-bp-opioid-rural-urban", outpath = tempfile())
+wrangled_rda("ocs-bp-opioid-rural-urban", outpath = tempdir())
 
 # Looking for more data on this topic: 
-extra_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
+extra_data("ocs-bp-opioid-rural-urban", outpath = tempdir())
 
 # Download repository in a zip file: 
-zip_ocs("ocs-bp-opioid-rural-urban", outpath = tempfile())
+zip_ocs("ocs-bp-opioid-rural-urban", outpath = tempdir())
 
 # Clone the case study GitHub repository (requires registered PAT): 
-clone_ocs("ocs-bp-opioid-rural-urban", outpath = tempfile(), fork_repo = TRUE)
+clone_ocs("ocs-bp-opioid-rural-urban", outpath = tempdir(), fork_repo = TRUE)
 
 # Setting fork_repo = TRUE will fork the repo first and then clone the fork, 
 # while FALSE will clone the repo directly from the Open Case Studies GitHub. 

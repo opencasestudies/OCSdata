@@ -58,6 +58,8 @@ Wrapper for the create_from_github function from usethis.
 }
 \examples{
 \dontrun{
-clone_ocs("ocs-bp-co2-emissions", outpath = tempfile())
+tmp = tempfile()
+dir.create(tmp)
+clone_ocs("ocs-bp-co2-emissions", outpath = tmp)
 }
 }

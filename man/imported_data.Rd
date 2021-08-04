@@ -49,6 +49,8 @@ the specified directory. This makes it so all the imported data
 are easily available in a local folder.
 }
 \examples{
-imported_data('ocs-bp-opioid-rural-urban', outpath = tempfile())
+tmp = tempfile()
+dir.create(tmp)
+imported_data('ocs-bp-opioid-rural-urban', outpath = tmp)
 
 }

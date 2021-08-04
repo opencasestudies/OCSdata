@@ -26,7 +26,10 @@
 #' @importFrom purrr map
 #' @export
 #'
-#' @examples extra_data('ocs-bp-opioid-rural-urban', outpath = tempfile())
+#' @examples
+#' tmp = tempfile()
+#' dir.create(tmp)
+#' extra_data('ocs-bp-opioid-rural-urban', outpath = tmp)
 #'
 extra_data <- function(casestudy, outpath = NULL){
   repo_names = c("ocs-bp-opioid-rural-urban", "ocs-bp-RTC-wrangling",

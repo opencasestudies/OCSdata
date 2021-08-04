@@ -49,6 +49,8 @@ the specified directory. This makes it so all the raw data
 are easily available in a local folder to be processed and wrangled.
 }
 \examples{
-raw_data('ocs-bp-opioid-rural-urban', outpath = tempfile())
+tmp = tempfile()
+dir.create(tmp)
+raw_data('ocs-bp-opioid-rural-urban', outpath = tmp)
 
 }

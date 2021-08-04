@@ -63,7 +63,7 @@ $\color{blue}{\text{Note: All of the case studies have at least raw, imported, a
 
 All of the functions also have an `outpath` argument to specify where the files should be saved to on your computer. This argument defaults to `NULL` which will ask you to specify a file path interactively, suggesting your current working directory as an option. If the user's session is not interactive, an error message is returned that tells the user to input a valid file path to `outpath`. The user is required to specify a file path to avoid unintended overwriting. 
 
-In all of the examples provided in the package documentation, `outpath = tempfile()` is used to save to a temporary directory. This is also to prevent overwriting of users' local files. To test the package functions with our examples and actually view the downloaded data folder, replace `tempfile()` with the file path to the desired directory as a character string.
+Temporary directories are used in all of the examples provided in the package documentation. This is to prevent the functions from overwriting users' local files. To test the package functions with our examples and actually view the downloaded data folder, replace `tempdir()` with the file path to the desired directory as a character string.
 
 ### <a name="fork"></a>fork_repo
 
@@ -83,7 +83,7 @@ library(OCSdata)
 The `raw_data` function will download the raw data files that can be imported into R.
 
 ```R
-raw_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
+raw_data("ocs-bp-opioid-rural-urban", outpath = tempdir())
 ```
 
 The function will create an OCS_data/data/raw directory where the raw data files can be found: 
@@ -97,7 +97,7 @@ If the input to `outpath` is the path to a folder called "demo," the directory s
 The `simpler_import_data` function will download raw data files that have been converted to file formats that are easier to import into R, typically .csv. Some case studies offer this option when the original raw files require a more complicated import step. 
 
 ```R
-simpler_import_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
+simpler_import_data("ocs-bp-opioid-rural-urban", outpath = tempdir())
 ```
 
 The function will create an OCS_data/data/simpler_import directory where the data files can be found: 
@@ -110,7 +110,7 @@ If the input to `outpath` is the path to a folder called "demo," the directory s
 The `extra_data` function will download raw data files that are not used in the case study, but are available for users to further analyze. 
 
 ```R
-extra_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
+extra_data("ocs-bp-opioid-rural-urban", outpath = tempdir())
 ```
 
 The function will create an OCS_data/data/extra directory where the data files can be found: 
@@ -123,7 +123,7 @@ If the input to `outpath` is the path to a folder called "demo," the directory s
 The `imported_data` function will download raw data files in .rda format. This means the data have already been imported into R objects. 
 
 ```R
-imported_data("ocs-bp-opioid-rural-urban", outpath = tempfile())
+imported_data("ocs-bp-opioid-rural-urban", outpath = tempdir())
 ```
 The function will create an OCS_data/data/imported directory where the imported data files can be found: 
 ![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/imported_data_directory.gif "imported data directory")
@@ -151,14 +151,14 @@ The following functions will download the data files that have already been wran
 
 **CSV**:
 ```R
-wrangled_csv("ocs-bp-opioid-rural-urban", outpath = tempfile())
+wrangled_csv("ocs-bp-opioid-rural-urban", outpath = tempdir())
 ```
 The function will create an OCS_data/data/wrangled directory where the wrangled csv files can be found: 
 ![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/wrangled_csv_directory.gif "wrangled csv directory")
 
 <a name="wrangrda"></a>**RDA**:
 ```R
-wrangled_rda("ocs-bp-opioid-rural-urban", outpath = tempfile())
+wrangled_rda("ocs-bp-opioid-rural-urban", outpath = tempdir())
 ```
 The function will create an OCS_data/data/wrangled directory where the wrangled rda files can be found: 
 ![](https://raw.githubusercontent.com/mbreshock/images/master/OCSdata/wrangled_rda_directory.gif "wrangled rda directory")
@@ -172,14 +172,14 @@ If the input to `outpath` is the path to a folder called "demo," the directory s
 The `zip_ocs` function will download the all of the repository files in a .zip folder and unzip them into a specified directory. 
 
 ```R
-zip_ocs("ocs-bp-opioid-rural-urban", outpath = tempfile())
+zip_ocs("ocs-bp-opioid-rural-urban", outpath = tempdir())
 ```
 
 ### <a name="clone"></a>Clone the case study GitHub repository: 
 The `clone_ocs` function will clone the specified case study's GitHub repository with git and download the whole repository to a specified directory. This function requires your GitHub personal access token (PAT) to be registered in R/RStudio.
 
 ```R
-clone_ocs("ocs-bp-opioid-rural-urban", outpath = tempfile(), fork_repo = TRUE)
+clone_ocs("ocs-bp-opioid-rural-urban", outpath = tempdir(), fork_repo = TRUE)
 ```
 Setting fork_repo = TRUE will fork the repo first and then clone the fork, 
 while FALSE will clone the repo directly from the Open Case Studies GitHub. 

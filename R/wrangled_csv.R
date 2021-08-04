@@ -42,7 +42,10 @@
 #' @importFrom purrr map
 #' @export
 #'
-#' @examples wrangled_csv('ocs-bp-opioid-rural-urban', outpath = tempfile())
+#' @examples
+#' tmp = tempfile()
+#' dir.create(tmp)
+#' wrangled_csv('ocs-bp-opioid-rural-urban', outpath = tmp)
 #'
 wrangled_csv <- function(casestudy, outpath = NULL){
   repo_names = c("ocs-bp-rural-and-urban-obesity", "ocs-bp-air-pollution",

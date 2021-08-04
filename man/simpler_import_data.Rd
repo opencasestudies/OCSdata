@@ -33,6 +33,8 @@ the specified directory. This makes it so all the simpler import data
 are easily available in a local folder to be processed and wrangled.
 }
 \examples{
-simpler_import_data('ocs-bp-opioid-rural-urban', outpath = tempfile())
+tmp = tempfile()
+dir.create(tmp)
+simpler_import_data('ocs-bp-opioid-rural-urban', outpath = tmp)
 
 }

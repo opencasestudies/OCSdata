@@ -26,7 +26,10 @@
 #' @importFrom purrr map
 #' @export
 #'
-#' @examples simpler_import_data('ocs-bp-opioid-rural-urban', outpath = tempfile())
+#' @examples
+#' tmp = tempfile()
+#' dir.create(tmp)
+#' simpler_import_data('ocs-bp-opioid-rural-urban', outpath = tmp)
 #'
 simpler_import_data <- function(casestudy, outpath = NULL){
   repo_names = c("ocs-bp-vaping-case-study", "ocs-bp-opioid-rural-urban",
