@@ -55,9 +55,11 @@ All of the OCSdata functions require a case study ID to be input to the `casestu
 | [Exploring CO2 emissions across time](https://www.opencasestudies.org/ocs-bp-co2-emissions/) | [ocs-bp-co2-emissions](https://github.com/opencasestudies/ocs-bp-co2-emissions) |
 | [Exploring global patterns of dietary behaviors associated with health risk](https://www.opencasestudies.org/ocs-bp-diet/) | [ocs-bp-diet](https://github.com/opencasestudies/ocs-bp-diet) |
 
-$\color{blue}{\text{The examples below use the "Opioids in United States" case study. To download data from a different case study, change "ocs-bp-opioid-rural-urban" to the ID of the case study you are interested in. (See table for list of IDs)}}$ 
+$\color{blue}{\text{The examples below use the "Opioids in United States" case study. To download data from a different case study,}}$ 
+$\color{blue}{\text{change "ocs-bp-opioid-rural-urban" to the ID of the case study you are interested in. (See table for list of IDs)}}$ 
 
-$\color{blue}{\text{Note: All of the case studies have at least raw, imported, and wrangled data. However, not all of them have extra or simpler_import data. Keep this in mind when using the extra_data() and simpler_import_data() functions.}}$
+$\color{blue}{\text{Note: All of the case studies have at least raw, imported, and wrangled data. However, not all of them have extra}}$
+$\color{blue}{\text{ or simpler_import data. Keep this in mind when using the extra_data() and simpler_import_data() functions.}}$
 
 ### <a name="outpath"></a>outpath
 
