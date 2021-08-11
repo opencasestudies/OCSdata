@@ -1,6 +1,10 @@
 # OCSdata
 
-![](https://github.com/mbreshock/OCSdata/actions/workflows/check-standard.yaml/badge.svg)
+[![R_cmd_check](https://github.com/mbreshock/OCSdata/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/opencasestudies/OCSdata/actions)
+[![CRAN status](https://www.r-pkg.org/badges/version/OCSdata)](https://CRAN.R-project.org/package=OCSdata)
+[![Downloads](http://cranlogs.r-pkg.org/badges/OCSdata)](https://cran.r-project.org/package=OCSdata)
+[![Codecov test coverage](https://codecov.io/gh/opencasestudies/OCSdata/branch/master/graph/badge.svg)](https://codecov.io/gh/opencasestudies/OCSdata?branch=master)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 
 ### Download Data from [Open Case Studies (OCS)](https://www.opencasestudies.org/)
 
