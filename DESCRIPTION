@@ -55,7 +55,10 @@ Imports:
     purrr (>= 0.3.0),
     httr (>= 1.4.0)
 Depends: R (>= 3.5.0)
-Suggests: knitr, rmarkdown
+Suggests: 
+    covr,
+    knitr,
+    rmarkdown
 VignetteBuilder: knitr
 License: MIT + file LICENSE
 Encoding: UTF-8
