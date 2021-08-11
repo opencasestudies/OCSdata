@@ -23,7 +23,8 @@ Authors@R: c(person(given = "Michael",
              person(given = "John",
                     family = "Muschelli",
                     role = c("ctb"),
-                    email = "jmusche1@jhu.edu"),
+                    email = "muschellij2@gmail.com",
+                    comment = c(ORCID = "0000-0001-6469-1750")),
              person(given = "Margaret",
                     family = "Taub",
                     role = c("ctb"),
@@ -37,6 +38,7 @@ Description:
     the case study being worked on. The package relies on the httr::GET() function to access
     files through the 'GitHub' API. The functions usethis::use_zip() and usethis::create_from_github() 
     are used to clone and/or download the case study repositories. 
+    <https://www.opencasestudies.org/>
     <https://github.com/opencasestudies/ocs-bp-rural-and-urban-obesity> 
     <https://github.com/opencasestudies/ocs-bp-air-pollution>
     <https://github.com/opencasestudies/ocs-bp-vaping-case-study>
