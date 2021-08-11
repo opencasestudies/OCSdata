@@ -12,7 +12,12 @@
 OCSdata is an R package to help you access and download case study data files hosted on the [OCS GitHub](https://github.com/opencasestudies). The package provides several different functions to enable users to grab the data they need at different sections in the case study, as well as download the whole case study repository. All the user needs to use the package is the name of the case study repository and a file path to the directory where the data should be saved. The package relies on the `GET()` function from [httr](https://cran.r-project.org/package=httr) to access files through the GitHub API. The functions `use_zip()` and `create_from_github()` from [usethis](https://usethis.r-lib.org/) are used to clone and/or download the case study repositories. 
 
 ## Installation 
+Download the current release version from CRAN: 
+```R
+install.packages("OCSdata")
+```
 
+Download the current development version from GitHub: 
 ```R
 # install.packages("devtools")
 devtools::install_github("opencasestudies/OCSdata")
