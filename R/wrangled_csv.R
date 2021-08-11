@@ -121,7 +121,8 @@ wrangled_csv <- function(casestudy, outpath = NULL){
           }
         }
       }
-      return(cat(paste("The downloaded files are in:", wrangledpath)))
+      cat(paste("The downloaded files are in:", wrangledpath, " "))
+      return(TRUE)
 
     } else {
       return("The specified directory does not exist.")

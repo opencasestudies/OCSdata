@@ -101,7 +101,8 @@ simpler_import_data <- function(casestudy, outpath = NULL){
           }
         }
       }
-      return(cat(paste("The downloaded files are in:", simportpath)))
+      cat(paste("The downloaded files are in:", simportpath, " "))
+      return(TRUE)
 
     } else {
       return("The specified directory does not exist.")

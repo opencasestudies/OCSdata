@@ -93,7 +93,10 @@ clone_ocs <- function(casestudy, outpath=NULL,fork_repo=NA){
     if (dir.exists(outpath)){
       create_from_github(paste0('opencasestudies/',casestudy), destdir = outpath,
                          fork = fork_repo, open = FALSE)
-      return(cat(paste("The downloaded repository is in:", outpath)))
+
+      cat(paste("The downloaded repository is in:", outpath, " "))
+      return(TRUE)
+
     } else {
       return("The specified directory does not exist.")
     }

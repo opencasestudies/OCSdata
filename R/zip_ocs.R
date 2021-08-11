@@ -87,7 +87,10 @@ zip_ocs <- function(casestudy, outpath=NULL){
     if (dir.exists(outpath)){
       use_zip(paste0('opencasestudies/',casestudy), destdir = outpath,
               cleanup = TRUE)
-      return(cat(paste("The downloaded repository is in:", outpath)))
+
+      cat(paste("The downloaded repository is in:", outpath, " "))
+      return(TRUE)
+
     } else {
       return("The specified directory does not exist.")
     }

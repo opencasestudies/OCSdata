@@ -101,7 +101,8 @@ extra_data <- function(casestudy, outpath = NULL){
           }
         }
       }
-      return(cat(paste("The downloaded files are in:", extrapath)))
+      cat(paste("The downloaded files are in:", extrapath, " "))
+      return(TRUE)
 
     } else {
       return("The specified directory does not exist.")
