@@ -1,10 +1,34 @@
 Package: OCSdata
 Title: Download Data from the 'Open Case Studies' Repository
 Version: 1.0.2
-Authors@R: person(given = "Michael",
-           family = "Breshock",
-           role = c("aut", "cre"),
-           email = "mbreshock@gmail.com")
+Authors@R: c(person(given = "Michael",
+                    family = "Breshock",
+                    role = c("aut"),
+                    email = "mbreshock@gmail.com"),
+             person(given = "Carrie",
+                    family = "Wright",
+                    role = c("aut", "cre", "ths"),
+                    email = "cwrigh60@jh.edu",
+                    comment = c(ORCID = "0000-0003-1325-6067")),
+             person(given = "Stephanie",
+                    family = "Hicks",
+                    role = c("aut"),
+                    email = "shicks19@jhu.edu",
+                    comment = c(ORCID = "0000-0002-7858-0231")),
+             person(given = "Leah",
+                    family = "Jager",
+                    role = c("ctb"),
+                    email = "ljager@jhu.edu",
+                    comment = c(ORCID = "0000-0003-3362-2298")),  
+             person(given = "John",
+                    family = "Muschelli",
+                    role = c("ctb"),
+                    email = "jmusche1@jhu.edu"),
+             person(given = "Margaret",
+                    family = "Taub",
+                    role = c("ctb"),
+                    email = "mtaub2@jhu.edu",
+                    comment = c(ORCID = "0000-0001-8008-618X")))
 Description: 
     Provides functions to access and download data from the 'Open Case Studies' <https://www.opencasestudies.org/> 
     repositories on 'GitHub' <https://github.com/opencasestudies>. Different functions enable 
