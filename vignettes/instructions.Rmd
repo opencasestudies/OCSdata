@@ -78,6 +78,7 @@ The following examples illustrate all of the different functions and how you can
 $\color{red}{\text{Note: To download the data into your current working directory, change the input for `outpath` to `getwd()`.}}$ 
 
 ```R
+# install.packages("OCSdata")
 library(OCSdata)
 ```
 
