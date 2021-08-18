@@ -65,6 +65,9 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-URL: https://github.com/opencasestudies/OCSdata, https://www.opencasestudies.org/
+URL: 
+    https://github.com/opencasestudies/OCSdata, 
+    https://doi.org/10.5281/zenodo.5214347,
+    https://www.opencasestudies.org/
 BugReports: https://github.com/opencasestudies/OCSdata/issues
 Config/testthat/edition: 3
