@@ -3,8 +3,9 @@
 [![R_cmd_check](https://github.com/mbreshock/OCSdata/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/opencasestudies/OCSdata/actions)
 [![CRAN status](https://www.r-pkg.org/badges/version/OCSdata)](https://CRAN.R-project.org/package=OCSdata)
 [![Downloads](http://cranlogs.r-pkg.org/badges/OCSdata)](https://cran.r-project.org/package=OCSdata)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5214347.svg)](https://doi.org/10.5281/zenodo.5214347)
 [![Codecov test coverage](https://codecov.io/gh/opencasestudies/OCSdata/branch/master/graph/badge.svg)](https://codecov.io/gh/opencasestudies/OCSdata?branch=master)
-[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 
 ### Download Data from [Open Case Studies (OCS)](https://www.opencasestudies.org/)
@@ -86,3 +87,5 @@ These examples use the [Opioids in United States](https://github.com/opencasestu
 ## Why Use OCSdata?
 
 All case study data is available in the respective [OCS GitHub](https://github.com/opencasestudies) repositories. However, case study users new to GitHub can find it a confusing process to access data from repositories. On top of that, users then must move the downloaded data into to the appropriate local directory. Overall, this process leaves room for error and acts as a barrier to introductory level students. Troubleshooting these errors can be a headache for both students and instructors and eats away at valuable learning time. OCSdata is an R package that bridges the gap from web-browser to Rstudio, allowing users to automatically download the data they need with simple functions all within R. 
+
+This package is licensed under the terms of the MIT license.
