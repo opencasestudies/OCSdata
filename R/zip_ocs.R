@@ -38,7 +38,7 @@
 #' data folder should be saved.
 #'
 #' @return If download is successful, the path to the downloaded data folder is
-#' returned. Otherwise the appropriate error message is returned.
+#' printed and the logical value TRUE is returned. Otherwise the appropriate error message is printed.
 #'
 #' @importFrom usethis use_zip
 #' @export

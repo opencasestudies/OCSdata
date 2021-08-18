@@ -44,7 +44,7 @@
 #' will be cloned. If you cannot push, the repo will be forked and cloned.
 #'
 #' @return If download is successful, the path to the downloaded data folder is
-#' returned. Otherwise the appropriate error message is returned.
+#' printed and the logical value TRUE is returned. Otherwise the appropriate error message is printed.
 #'
 #' @importFrom usethis create_from_github
 #' @export
