@@ -84,6 +84,7 @@ These examples use the [Opioids in United States](https://github.com/opencasestu
 | [Exploring CO2 emissions across time](https://www.opencasestudies.org/ocs-bp-co2-emissions/) | [ocs-bp-co2-emissions](https://github.com/opencasestudies/ocs-bp-co2-emissions) |
 | [Exploring global patterns of dietary behaviors associated with health risk](https://www.opencasestudies.org/ocs-bp-diet/) | [ocs-bp-diet](https://github.com/opencasestudies/ocs-bp-diet) |
 
+
 ## Why Use OCSdata?
 
 All case study data is available in the respective [OCS GitHub](https://github.com/opencasestudies) repositories. However, case study users new to GitHub can find it a confusing process to access data from repositories. On top of that, users then must move the downloaded data into to the appropriate local directory. Overall, this process leaves room for error and acts as a barrier to introductory level students. Troubleshooting these errors can be a headache for both students and instructors and eats away at valuable learning time. OCSdata is an R package that bridges the gap from web-browser to Rstudio, allowing users to automatically download the data they need with simple functions all within R. 
