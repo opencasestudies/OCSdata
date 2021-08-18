@@ -41,7 +41,7 @@ will be cloned. If you cannot push, the repo will be forked and cloned.}
 }
 \value{
 If download is successful, the path to the downloaded data folder is
-returned. Otherwise the appropriate error message is returned.
+printed and the logical value TRUE is returned. Otherwise the appropriate error message is printed.
 }
 \description{
 Clone the specified case study repository and save it as a new R project in a local directory.

@@ -21,7 +21,7 @@ data folder should be saved to.}
 }
 \value{
 If download is successful, the path to the downloaded data folder is
-returned. Otherwise the appropriate error message is returned.
+printed and the logical value TRUE is returned. Otherwise the appropriate error message is printed.
 }
 \description{
 Download the specified case study simpler import data to use as you follow along the case study.

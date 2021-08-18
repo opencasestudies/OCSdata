@@ -37,7 +37,7 @@ data folder should be saved.}
 }
 \value{
 If download is successful, the path to the downloaded data folder is
-returned. Otherwise the appropriate error message is returned.
+printed and the logical value TRUE is returned. Otherwise the appropriate error message is printed.
 }
 \description{
 Download the specified case study repository zip file and unzip it to a local directory.
