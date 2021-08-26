@@ -37,8 +37,10 @@ Description:
     download the whole case study repository. All the user needs to do is input the name of 
     the case study being worked on. The package relies on the httr::GET() function to access
     files through the 'GitHub' API. The functions usethis::use_zip() and usethis::create_from_github() 
-    are used to clone and/or download the case study repositories. To cite an individual case study,
-    please see the respective 'README' file at <https://github.com/opencasestudies/>.
+    are used to clone and/or download the case study repositories. 
+    See <https://github.com/opencasestudies/OCSdata/blob/master/README.md> for 
+    instructions and examples. To cite an individual case study, please see the 
+    'README' file in the respective case study repository:
     <https://github.com/opencasestudies/ocs-bp-rural-and-urban-obesity> 
     <https://github.com/opencasestudies/ocs-bp-air-pollution>
     <https://github.com/opencasestudies/ocs-bp-vaping-case-study>
