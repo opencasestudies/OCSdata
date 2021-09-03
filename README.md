@@ -1,4 +1,4 @@
-# OCSdata <img src='https://raw.githubusercontent.com/mbreshock/images/master/OCS_stickers/OCSdata_hexsticker_bold.png' align="right" height="160" />
+# OCSdata <img src='https://raw.githubusercontent.com/mbreshock/images/master/OCS_stickers/OCSdata_hexsticker_bold.png' align="right" height="160"/>
 <!-- badges: start -->
 [![R_cmd_check](https://github.com/mbreshock/OCSdata/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/opencasestudies/OCSdata/actions)
 [![CRAN status](https://www.r-pkg.org/badges/version/OCSdata)](https://CRAN.R-project.org/package=OCSdata)
