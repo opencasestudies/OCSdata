@@ -40,6 +40,7 @@
 #'
 #' @importFrom httr GET write_disk content
 #' @importFrom purrr map
+#' @importFrom gh gh
 #' @export
 #'
 #' @examples
@@ -48,12 +49,9 @@
 #' wrangled_rda('ocs-bp-opioid-rural-urban', outpath = tmp)
 #'
 wrangled_rda <- function(casestudy, outpath = NULL){
-  repo_names = c("ocs-bp-rural-and-urban-obesity", "ocs-bp-air-pollution",
-                 "ocs-bp-vaping-case-study", "ocs-bp-opioid-rural-urban",
-                 "ocs-bp-RTC-wrangling", "ocs-bp-RTC-analysis",
-                 "ocs-bp-youth-disconnection", "ocs-bp-youth-mental-health",
-                 "ocs-bp-school-shootings-dashboard", "ocs-bp-co2-emissions",
-                 "ocs-bp-diet")
+  my_repos = gh("GET /users/{username}/repos", username = "opencasestudies", .limit = Inf)
+  repo_names = vapply(my_repos, "[[", "", "name")
+
   if (casestudy %in% repo_names){
     # check outpath input
     if (is.null(outpath)) {

@@ -24,6 +24,7 @@
 #'
 #' @importFrom httr GET write_disk content
 #' @importFrom purrr map
+#' @importFrom gh gh
 #' @export
 #'
 #' @examples
@@ -32,8 +33,9 @@
 #' extra_data('ocs-bp-opioid-rural-urban', outpath = tmp)
 #'
 extra_data <- function(casestudy, outpath = NULL){
-  repo_names = c("ocs-bp-opioid-rural-urban", "ocs-bp-RTC-wrangling",
-                 "ocs-bp-co2-emissions")
+  my_repos = gh("GET /users/{username}/repos", username = "opencasestudies", .limit = Inf)
+  repo_names = vapply(my_repos, "[[", "", "name")
+
   if (casestudy %in% repo_names){
     # check outpath input
     if (is.null(outpath)) {

@@ -47,6 +47,7 @@
 #' printed and the logical value TRUE is returned. Otherwise the appropriate error message is printed.
 #'
 #' @importFrom usethis create_from_github
+#' @importFrom gh gh
 #' @export
 #'
 #' @examples
@@ -56,12 +57,9 @@
 #' clone_ocs("ocs-bp-co2-emissions", outpath = tmp)
 #' }
 clone_ocs <- function(casestudy, outpath=NULL,fork_repo=NA){
-  repo_names = c("ocs-bp-rural-and-urban-obesity", "ocs-bp-air-pollution",
-                 "ocs-bp-vaping-case-study", "ocs-bp-opioid-rural-urban",
-                 "ocs-bp-RTC-wrangling", "ocs-bp-RTC-analysis",
-                 "ocs-bp-youth-disconnection", "ocs-bp-youth-mental-health",
-                 "ocs-bp-school-shootings-dashboard", "ocs-bp-co2-emissions",
-                 "ocs-bp-diet")
+  my_repos = gh("GET /users/{username}/repos", username = "opencasestudies", .limit = Inf)
+  repo_names = vapply(my_repos, "[[", "", "name")
+
   if (casestudy %in% repo_names){
     if (is.null(outpath)) {
       if (interactive()){

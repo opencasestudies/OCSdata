@@ -14,11 +14,13 @@ OCSdata is an R package to help you access and download case study data files ho
 
 ## Installation 
 Download the current release version from CRAN: 
+
 ```R
 install.packages("OCSdata")
 ```
 
 Download the current development version from GitHub: 
+
 ```R
 # install.packages("devtools")
 devtools::install_github("opencasestudies/OCSdata")

@@ -24,6 +24,7 @@
 #'
 #' @importFrom httr GET write_disk content
 #' @importFrom purrr map
+#' @importFrom gh gh
 #' @export
 #'
 #' @examples
@@ -32,8 +33,9 @@
 #' simpler_import_data('ocs-bp-opioid-rural-urban', outpath = tmp)
 #'
 simpler_import_data <- function(casestudy, outpath = NULL){
-  repo_names = c("ocs-bp-vaping-case-study", "ocs-bp-opioid-rural-urban",
-                 "ocs-bp-youth-disconnection")
+  my_repos = gh("GET /users/{username}/repos", username = "opencasestudies", .limit = Inf)
+  repo_names = vapply(my_repos, "[[", "", "name")
+
   if (casestudy %in% repo_names){
     # check outpath input
     if (is.null(outpath)) {
