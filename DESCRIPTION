@@ -1,6 +1,6 @@
 Package: OCSdata
 Title: Download Data from the 'Open Case Studies' Repository
-Version: 1.0.2
+Version: 1.0.3
 Authors@R: c(person(given = "Michael",
                     family = "Breshock",
                     role = c("aut"),
