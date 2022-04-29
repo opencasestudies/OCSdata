@@ -6,6 +6,7 @@
 [![Codecov test coverage](https://codecov.io/gh/opencasestudies/OCSdata/branch/master/graph/badge.svg)](https://codecov.io/gh/opencasestudies/OCSdata?branch=master)
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5214347.svg)](https://doi.org/10.5281/zenodo.5214347)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/opencasestudies/OCSdata?style=social)
 <!-- badges: end -->
 
 ### Download Data from [Open Case Studies (OCS)](https://www.opencasestudies.org/)
