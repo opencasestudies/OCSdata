@@ -95,3 +95,5 @@ These examples use the [Opioids in United States](https://github.com/opencasestu
 All case study data are available in the respective [OCS GitHub](https://github.com/opencasestudies) repositories. However, case study users new to GitHub can find it a confusing process to access data from repositories. On top of that, users then must move the downloaded data to the appropriate local directory. Overall, this process leaves room for error and acts as a barrier to introductory level students. Troubleshooting these errors can be a headache for both students and instructors and eats away at valuable learning time. OCSdata is an R package that bridges the gap from web-browser to Rstudio, allowing users to automatically download the data they need with simple functions all within R. 
 
 This package is licensed under the terms of the MIT license.
+
+Last update: April 28, 2022
