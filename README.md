@@ -2,7 +2,7 @@
 <!-- badges: start -->
 [![R_cmd_check](https://github.com/mbreshock/OCSdata/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/opencasestudies/OCSdata/actions)
 [![CRAN status](https://www.r-pkg.org/badges/version/OCSdata)](https://CRAN.R-project.org/package=OCSdata)
-[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/OCSdata)](https://cran.r-project.org/package=OCSdata)
+[![Downloads](https://cranlogs.r-pkg.org/badges/OCSdata)](https://cran.r-project.org/package=OCSdata)
 [![Codecov test coverage](https://codecov.io/gh/opencasestudies/OCSdata/branch/master/graph/badge.svg)](https://codecov.io/gh/opencasestudies/OCSdata?branch=master)
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5214347.svg)](https://doi.org/10.5281/zenodo.5214347)
